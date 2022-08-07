@@ -15,9 +15,7 @@ This means that we can create a source of truth for particular state management,
 
 Let's create a new Alpine JS store called "cart" that we will place in either `assets/theme.js` or `layouts/theme.liquid`.
 
-<Callout>
-  If using `assets/theme.js` then you will need to import Alpine JS as a module.
-</Callout>
+<Callout text="If using `assets/theme.js` then you will need to import Alpine JS as a module." />
 
 Here's our Alpine JS store for the cart.
 
@@ -59,9 +57,6 @@ The last part is the HTML, thankfully Alpine JS exposes the store in a `$store` 
 
 And that's that. You can now take `$store.cart.clearCart` and place that where you need to clear the cart in your Shopify store.
 
-<Callout>
-  If the clear cart button is within a `form` then you'll need to add
-  `type="button"` to the button to prevent it from submitting the form.
-</Callout>
+<Callout text="If the clear cart button is within a `form` then you'll need to add `type="button"` to the button to prevent it from submitting the form." />
 
 If you are using this on the cart page or within a cart popup/drawer then you'll want to handle the UI to show the user that the cart has been emptied.

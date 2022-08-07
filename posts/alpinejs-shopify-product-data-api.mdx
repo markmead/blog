@@ -83,10 +83,9 @@ The next step with this process is getting the data into Alpine JS, for that we 
 </script>
 ```
 
-<Callout>
-  `x-money` is an custom directive that replicates the `| money` filter in
-  Liquid
-</Callout>
+<Callout text="`x-money` is an custom Alpine JS directive that replicates the `| money` filter." />
+
+Check out the [Alpine JS Money](https://github.com/markmead/alpinejs-money) plugin.
 
 Everything happens in the `init()` function from Alpine JS. Let's break this down.
 
@@ -113,7 +112,7 @@ This function calls another function `getVariantParam()` which returns the varia
 
 If then checks the variants array in the `data` object for a match based on the `variantId`, if no match was found it defaults to the first variant in the variants array. It then sets the `variant` variable to the variant that's returned.
 
-<Callout emoji="💡">The variants array is included within `{{ product | json }}`</Callout>
+<Callout text="The variants array is included within `{{ product | json }}`" />
 
 **`listenForChange()`**
 

@@ -1,4 +1,6 @@
-export default function Callout({ theme, children }) {
+export default function Callout({ theme, text }) {
+  console.log(text)
+
   let emojiOptions = {
     base: '💡',
     error: '💀',
@@ -22,7 +24,7 @@ export default function Callout({ theme, children }) {
           {renderEmoji}
         </span>
 
-        <div className="py-3 pr-3">{children}</div>
+        <div className="py-3 pr-3">{text}</div>
       </div>
     </>
   )
