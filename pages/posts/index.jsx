@@ -8,7 +8,7 @@ import Posts from '../../components/Posts'
 export default function PostsIndex({ posts }) {
   return (
     <>
-      <article className="prose prose-lg">
+      <article className="prose">
         <h1>Posts</h1>
 
         <p className="lead">Here are posts about different things.</p>

@@ -1,16 +1,29 @@
+import { useRouter } from 'next/router'
+
 import Link from 'next/link'
 
 export default function Header() {
+  let nextRouter = useRouter()
+
+  let menuItems = [
+    { title: 'Home', path: '/' },
+    { title: 'Posts', path: '/posts' },
+  ]
+
   return (
     <>
-      <nav className="flex gap-4">
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-
-        <Link href="/posts">
-          <a>Posts</a>
-        </Link>
+      <nav className="flex gap-4 p-4 justify-center bg-gray-100 rounded-lg">
+        {menuItems.map((menuItem) => (
+          <Link href={menuItem.path} key={menuItem.path}>
+            <a
+              className={
+                nextRouter.pathname === menuItem.path ? 'font-medium' : ''
+              }
+            >
+              {menuItem.title}
+            </a>
+          </Link>
+        ))}
 
         <a
           href="https://twitter.com/itsmarkmead"

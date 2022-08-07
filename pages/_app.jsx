@@ -5,6 +5,7 @@ import Script from 'next/script'
 
 import Layout from '../components/Layout'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -47,11 +48,15 @@ function MyApp({ Component, pageProps }) {
         }}
       />
 
-      <Layout>
+      <div className="max-w-prose mx-auto py-8 space-y-8">
         <Header />
 
-        <Component {...pageProps} />
-      </Layout>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+
+        <Footer />
+      </div>
     </>
   )
 }

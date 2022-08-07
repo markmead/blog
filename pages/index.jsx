@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
@@ -8,7 +10,7 @@ import Posts from '../components/Posts'
 export default function Index({ posts }) {
   return (
     <>
-      <article className="prose prose-lg">
+      <article className="prose">
         <h1>Mark Mead</h1>
 
         <p className="lead">
@@ -17,22 +19,32 @@ export default function Index({ posts }) {
         </p>
 
         <Posts posts={posts} />
+
+        <div className="flex justify-center">
+          <Link href="/posts">
+            <a className="no-underline bg-gray-100 rounded-lg p-4 block">
+              View more posts
+            </a>
+          </Link>
+        </div>
       </article>
     </>
   )
 }
 
 export function getStaticProps() {
-  const posts = postFilePaths.map((filePath) => {
-    const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
-    const { content, data } = matter(source)
+  const posts = postFilePaths
+    .map((filePath) => {
+      const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
+      const { content, data } = matter(source)
 
-    return {
-      content,
-      data,
-      filePath,
-    }
-  })
+      return {
+        content,
+        data,
+        filePath,
+      }
+    })
+    .slice(0, 3)
 
   return { props: { posts } }
 }

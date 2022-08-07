@@ -14,7 +14,7 @@ const components = {
 export default function PostPage({ source, frontMatter }) {
   return (
     <>
-      <article className="prose prose-lg">
+      <article className="prose">
         <h1>{frontMatter.title}</h1>
 
         <p className="lead">{frontMatter.description}</p>
