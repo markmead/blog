@@ -11,7 +11,7 @@ export default function PostsIndex({ posts }) {
       <article className="prose prose-lg">
         <h1>Posts</h1>
 
-        <p className="lead">Here are my posts about different things.</p>
+        <p className="lead">Here are posts about different things.</p>
 
         <Posts posts={posts} />
       </article>

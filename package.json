@@ -1,8 +1,8 @@
 {
+  "name": "markmead",
   "private": true,
   "scripts": {
     "dev": "next",
-    "dev:watch": "next-remote-watch ./posts",
     "build": "next build",
     "start": "next start"
   },
