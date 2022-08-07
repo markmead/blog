@@ -8,6 +8,7 @@ export default function Header() {
   let menuItems = [
     { title: 'Home', path: '/' },
     { title: 'Posts', path: '/posts' },
+    { title: 'Uses', path: '/uses' },
   ]
 
   return (

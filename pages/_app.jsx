@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps }) {
         }}
       />
 
-      <div className="max-w-prose mx-auto py-8 space-y-8">
+      <div className="max-w-prose mx-auto py-8 space-y-8 px-4">
         <Header />
 
         <Layout>
