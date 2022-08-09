@@ -11,24 +11,24 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>TALL Stack Developer | Mark Mead</title>
+        <title>Web Developer | Mark Mead</title>
         <meta
           name="description"
-          content="Web developer using the TALL stack to create eCommerce solutions for clients. Creator of HyperUI, the free open source Tailwind CSS component library."
+          content="Creator of HyperUI and an eCommerce developer using the TALL stack and Shopify."
           key="description"
         />
         <meta
           property="og:title"
-          content="TALL Stack Developer | Mark Mead"
+          content="Web Developer | Mark Mead"
           key="og:title"
         />
         <meta
           property="og:description"
-          content="Web developer using the TALL stack to create eCommerce solutions for clients. Creator of HyperUI, the free open source Tailwind CSS component library."
+          content="Creator of HyperUI and an eCommerce developer using the TALL stack and Shopify."
           key="og:description"
         />
 
-        <link rel="icon" href="https://fav.farm/🦑" />
+        <link rel="icon" href="https://fav.farm/💐" />
       </Head>
 
       <Script

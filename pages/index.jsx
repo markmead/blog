@@ -14,16 +14,15 @@ export default function Index({ posts }) {
         <h1>Mark Mead</h1>
 
         <p className="lead">
-          Welcome to my website. Here you will find posts about different
-          things.
+          Welcome to my website. Here you will find posts about things.
         </p>
 
         <Posts posts={posts} />
 
         <div className="flex justify-center">
           <Link href="/posts">
-            <a className="no-underline bg-gray-100 rounded-lg p-4 block">
-              View more posts
+            <a className="no-underline bg-gray-100 rounded-lg p-4 block text-sm">
+              View all posts
             </a>
           </Link>
         </div>
