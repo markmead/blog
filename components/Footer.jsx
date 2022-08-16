@@ -1,8 +1,10 @@
 export default function Footer() {
   return (
     <>
-      <footer className="gap-4 p-4 bg-gray-100 rounded-lg text-center">
-        {new Date().getFullYear()} Mark Mead.
+      <footer className="gap-4 p-4 bg-slate-100 rounded-lg text-center">
+        <p className="text-sm text-slate-600">
+          {new Date().getFullYear()} Mark Mead.
+        </p>
       </footer>
     </>
   )

@@ -6,17 +6,27 @@ export default function Header() {
   let nextRouter = useRouter()
 
   let menuItems = [
-    { title: 'Posts', path: '/posts' },
-    { title: 'Uses', path: '/uses' },
+    { title: 'Posts', path: '/posts', external: false },
+    { title: 'Uses', path: '/uses', external: false },
+    {
+      title: 'Twitter',
+      path: 'https://twitter.com/itsmarkmead',
+      external: true,
+    },
+    { title: 'GitHub', path: 'https://github.com/markmead', external: true },
   ]
 
   return (
     <>
-      <header className="flex items-center justify-between p-4 bg-gray-100 rounded-lg">
+      <header className="flex items-center justify-between p-4 bg-slate-100 rounded-lg">
         <Link href="/">
-          <a>
+          <a
+            aria-current={nextRouter.pathname === '/' ? 'page' : 'false'}
+            target="_self"
+            rel="self"
+          >
             <span className="sr-only">Home</span>
-            <span className="text-lg">🏡</span>
+            <span className="sm:text-lg">🏡</span>
           </a>
         </Link>
 
@@ -25,29 +35,20 @@ export default function Header() {
             <Link href={menuItem.path} key={menuItem.path}>
               <a
                 className={
-                  nextRouter.pathname === menuItem.path ? 'font-medium' : ''
+                  nextRouter.pathname === menuItem.path
+                    ? 'font-medium text-slate-700'
+                    : 'text-slate-600 hover:text-slate-700'
                 }
+                aria-current={
+                  nextRouter.pathname === menuItem.path ? 'page' : 'false'
+                }
+                target={menuItem.external ? '_blank' : '_self'}
+                rel={menuItem.external ? 'nofollow noreferrer' : 'self'}
               >
-                {menuItem.title}
+                <span className="text-sm">{menuItem.title}</span>
               </a>
             </Link>
           ))}
-
-          <a
-            href="https://twitter.com/itsmarkmead"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Twitter
-          </a>
-
-          <a
-            href="https://github.com/markmead"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            GitHub
-          </a>
         </nav>
       </header>
     </>
