@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Uses() {
   return (
     <>
-      <article className="prose">
+      <article className="prose max-w-none prose-slate">
         <h1>Uses</h1>
 
         <p className="lead">

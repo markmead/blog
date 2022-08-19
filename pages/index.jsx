@@ -10,7 +10,7 @@ import Posts from '../components/Posts'
 export default function Index({ posts }) {
   return (
     <>
-      <article className="prose">
+      <article className="prose max-w-none prose-slate">
         <h1>Mark Mead</h1>
 
         <p className="lead">
@@ -21,8 +21,8 @@ export default function Index({ posts }) {
 
         <div className="flex justify-center">
           <Link href="/posts">
-            <a className="no-underline bg-gray-100 rounded-lg p-4 block text-sm">
-              View all posts
+            <a className="no-underline bg-gray-100 rounded-lg px-5 py-3 block">
+              <span className="text-sm font-normal">View all posts</span>
             </a>
           </Link>
         </div>
