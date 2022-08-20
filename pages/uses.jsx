@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 export default function Uses() {
   return (
     <>
@@ -8,7 +6,7 @@ export default function Uses() {
 
         <p className="lead">
           Here's the tack stack that I use. As for hardware I use one item, my
-          MacBook Pro (14-inch, 2021). Last update was on the 5th Aug, 2022.
+          MacBook Pro (14-inch, 2021). Last update was on the 20th Aug, 2022.
         </p>
 
         <h2>Current</h2>
@@ -31,6 +29,10 @@ export default function Uses() {
           <li>Hyper (ZSH)</li>
           <li>Visual Studio Code</li>
           <li>Figma</li>
+          <li>Stripe</li>
+          <li>Opayo</li>
+          <li>PayPal</li>
+          <li>Klarna</li>
         </ul>
 
         <h2>Previous</h2>
@@ -52,6 +54,7 @@ export default function Uses() {
           <li>Sublime 3</li>
           <li>Adobe XD</li>
           <li>ResponsivelyApp</li>
+          <li>Heroku</li>
         </ul>
       </article>
     </>

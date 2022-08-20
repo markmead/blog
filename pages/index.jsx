@@ -4,7 +4,7 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
 
-import { postFilePaths, POSTS_PATH } from '../utils/mdxUtils'
+import { postFilePaths, POSTS_PATH } from '../utils/mdx'
 import Posts from '../components/Posts'
 
 export default function Index({ posts }) {

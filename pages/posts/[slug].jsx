@@ -5,7 +5,8 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
 
-import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
+import { postFilePaths, POSTS_PATH } from '../../utils/mdx'
+import Head from 'next/head'
 
 const components = {
   Callout: dynamic(() => import('../../components/Callout')),
@@ -14,6 +15,25 @@ const components = {
 export default function PostPage({ source, frontMatter }) {
   return (
     <>
+      <Head>
+        <title>{frontMatter.title} | Mark Mead</title>
+        <meta
+          name="description"
+          content={frontMatter.description}
+          key="description"
+        />
+        <meta
+          property="og:title"
+          content="{frontMatter.title} | Mark Mead"
+          key="og:title"
+        />
+        <meta
+          property="og:description"
+          content={frontMatter.description}
+          key="og:description"
+        />
+      </Head>
+
       <article className="prose max-w-none prose-slate">
         <h1>{frontMatter.title}</h1>
 

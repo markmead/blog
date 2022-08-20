@@ -10,7 +10,7 @@ export default function Posts({ posts }) {
               as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
               href={`/posts/[slug]`}
             >
-              <a className="no-underline p-4 bg-slate-50 sm:bg-transparent sm:hover:bg-slate-100 rounded-lg block">
+              <a className="no-underline p-4 bg-slate-50 sm:bg-transparent sm:hover:bg-slate-50 rounded-lg block">
                 <h3 className="m-0">{post.data.title}</h3>
 
                 <div className="font-normal">

@@ -18,7 +18,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="flex items-center justify-between p-4 bg-slate-100 rounded-lg">
+      <header className="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
         <Link href="/">
           <a
             aria-current={nextRouter.pathname === '/' ? 'page' : 'false'}
