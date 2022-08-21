@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import 'prismjs/themes/prism-okaidia.css'
 
 import Head from 'next/head'
 import Script from 'next/script'
@@ -48,14 +49,16 @@ function MyApp({ Component, pageProps }) {
         }}
       />
 
-      <div className="max-w-2xl mx-auto p-4 sm:py-8 space-y-8">
-        <Header />
+      <div className="bg-white dark:bg-gray-900">
+        <div className="max-w-2xl mx-auto p-4 sm:py-8 space-y-8">
+          <Header />
 
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
 
-        <Footer />
+          <Footer />
+        </div>
       </div>
     </>
   )

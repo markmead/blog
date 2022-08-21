@@ -18,7 +18,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
+      <header className="flex items-center justify-between p-4 bg-slate-50 border border-gray-100 dark:bg-gray-800 dark:border-gray-700 rounded-xl">
         <Link href="/">
           <a
             aria-current={nextRouter.pathname === '/' ? 'page' : 'false'}
@@ -36,8 +36,8 @@ export default function Header() {
               <a
                 className={
                   nextRouter.pathname === menuItem.path
-                    ? 'font-medium text-slate-700'
-                    : 'text-slate-600 hover:text-slate-700'
+                    ? 'font-medium text-slate-700 dark:text-gray-300'
+                    : 'text-slate-600 hover:text-slate-700 dark:text-gray-300 dark:hover:text-gray-200'
                 }
                 aria-current={
                   nextRouter.pathname === menuItem.path ? 'page' : 'false'

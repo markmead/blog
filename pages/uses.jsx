@@ -1,7 +1,7 @@
 export default function Uses() {
   return (
     <>
-      <article className="prose max-w-none prose-slate">
+      <article className="prose max-w-none prose-slate dark:prose-invert">
         <h1>Uses</h1>
 
         <p className="lead">

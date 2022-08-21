@@ -8,6 +8,34 @@ a {
   @apply focus:outline-none focus:ring focus:ring-amber-500;
 }
 
-*::selection {
-  @apply bg-amber-100;
+pre[class*='language-'] {
+  @apply p-8 m-0 rounded-xl border bg-gray-900  border-gray-800 dark:bg-gray-800 dark:border-gray-700  !important;
+}
+
+.token:is(.property, .tag, .constant, .symbol, .deleted) {
+  @apply text-red-400 !important;
+}
+
+.token:is(.selector, .attr-name, .string, .char, .builtin, .inserted) {
+  @apply text-yellow-400 !important;
+}
+
+.token:is(.atrule, .attr-value, .function, .class-name) {
+  @apply text-green-400 !important;
+}
+
+.token:is(.comment, .prolog, .doctype, .cdata) {
+  @apply text-gray-400 !important;
+}
+
+.token:is(.operator, .entity, .url, .variable) {
+  @apply text-white !important;
+}
+
+.token:is(.boolean, .number) {
+  @apply text-purple-400 !important;
+}
+
+.token.keyword {
+  @apply text-cyan-400 !important;
 }
