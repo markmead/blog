@@ -18,7 +18,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+      <header className="flex items-center justify-between p-4 bg-slate-50 rounded-xl">
         <Link href="/">
           <a
             aria-current={nextRouter.pathname === '/' ? 'page' : 'false'}
@@ -26,7 +26,7 @@ export default function Header() {
             rel="self"
           >
             <span className="sr-only">Home</span>
-            <span className="sm:text-lg">🏡</span>
+            <span className="text-lg sm:text-xl">🏡</span>
           </a>
         </Link>
 
