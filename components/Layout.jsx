@@ -1,7 +1,7 @@
 export default function Layout({ children }) {
   return (
-    <>
-      <main>{children}</main>
-    </>
+    <main>
+      <div className="py-8">{children}</div>
+    </main>
   )
 }
