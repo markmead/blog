@@ -6,9 +6,11 @@ export default function Callout({ theme, text }) {
   }
 
   let calloutStyles = {
-    error: 'bg-red-50 border-red-100 text-red-800',
-    success: 'bg-green-50 border-green-100 text-green-800',
-    base: 'bg-orange-50 border-orange-100 text-orange-800',
+    error:
+      'bg-rose-100 border-rose-200 text-rose-800 dark:bg-rose-800 dark:border-rose-700 dark:text-rose-100',
+    success:
+      'bg-emerald-100 border-emerald-200 text-emerald-800 dark:bg-emerald-800 dark:border-emerald-700 dark:text-emerald-100',
+    base: 'bg-amber-100 border-amber-200 text-amber-800 dark:bg-amber-800 dark:border-amber-700 dark:text-amber-100',
   }
 
   let renderEmoji = theme ? emojiOptions[theme] : emojiOptions.base
