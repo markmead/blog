@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Project from './Project'
 
 export default function Projects({ projects, stacked }) {
