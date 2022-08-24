@@ -43,7 +43,7 @@ export default function PostPage({ source, frontMatter }) {
         />
       </Head>
 
-      <article className="prose max-w-none prose-slate dark:prose-invert">
+      <article className="prose max-w-none prose-slate">
         <h1>{frontMatter.title}</h1>
 
         <p className="lead">{frontMatter.description}</p>

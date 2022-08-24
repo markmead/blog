@@ -49,16 +49,16 @@ function MyApp({ Component, pageProps }) {
         }}
       />
 
-      <div className="bg-white dark:bg-gray-900">
-        <div className="max-w-2xl mx-auto p-4 sm:py-8 space-y-8">
-          <Header />
+      <div className="bg-white relative">
+        <img src="./bg.svg" className="fixed inset-0 opacity-50" />
 
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+        <Header />
 
-          <Footer />
-        </div>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+
+        <Footer />
       </div>
     </>
   )

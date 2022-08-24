@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
@@ -10,22 +8,16 @@ import Posts from '../components/Posts'
 export default function Index({ posts }) {
   return (
     <>
-      <article className="prose max-w-none prose-slate dark:prose-invert">
+      <article className="prose max-w-none prose-slate">
         <h1>Mark Mead</h1>
 
         <p className="lead">
           Welcome to my website. Here you will find posts about things.
         </p>
 
-        <Posts posts={posts} />
+        <h2>Latest Posts</h2>
 
-        <div className="flex justify-center">
-          <Link href="/posts">
-            <a className="no-underline bg-gray-100 border border-gray-200 dark:bg-gray-800 dark:border-gray-700 rounded-lg px-5 py-3 block">
-              <span className="text-sm font-normal">View all posts</span>
-            </a>
-          </Link>
-        </div>
+        <Posts posts={posts} />
       </article>
     </>
   )
@@ -43,7 +35,7 @@ export function getStaticProps() {
         filePath,
       }
     })
-    .slice(0, 3)
+    .slice(0, 4)
 
   return { props: { posts } }
 }
