@@ -35,6 +35,7 @@ The next step with this process is getting the data into Alpine JS, for that we 
 
   <form>
     <input type="text" name="id" x-model="variant.id" />
+
     <button type="submit">Add to Cart</button>
   </form>
 
@@ -83,11 +84,13 @@ The next step with this process is getting the data into Alpine JS, for that we 
 </script>
 ```
 
+Woah, that's a lot! Let's break it down.
+
 <Callout text="`x-money` is an custom Alpine JS directive that replicates the `| money` filter." />
 
 Check out the [Alpine JS Money](https://github.com/markmead/alpinejs-money) plugin.
 
-Everything happens in the `init()` function from Alpine JS. Let's break this down.
+First off, everything happens in the `init()` function from Alpine JS.
 
 ```js
 init() {
