@@ -29,7 +29,9 @@ export function getStaticProps() {
         filePath,
       }
     })
-    .sort((project) => project.data.featured && -1)
+    .sort((projectA, projectB) =>
+      projectA.data.featured < projectB.data.featured ? 0 : -1
+    )
 
   return { props: { projects } }
 }

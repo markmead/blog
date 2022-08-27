@@ -5,9 +5,11 @@ date: 2021/12/30
 tags: [alpinejs, javascript, shopify, api]
 ---
 
-In this post we will go over two methods of getting product data from the Shopify API with Alpine JS.
+In this post we will go over two methods of getting product data from the
+Shopify API with Alpine JS.
 
-If you've been using Dawn, the new open-source theme from Shopify that makes use of Shopify 2.0, you may have seen the following code.
+If you've been using Dawn, the new open-source theme from Shopify that makes use
+of Shopify 2.0, you may have seen the following code.
 
 ```html
 <script type="application/json">
@@ -23,7 +25,8 @@ JSON.parse(document.querySelector('[type="application/json"]').textContent)
 
 This approach works great and is a new concept to me, so thanks Shopify 🙌
 
-The next step with this process is getting the data into Alpine JS, for that we can use `Alpine.data()`.
+The next step with this process is getting the data into Alpine JS, for that we
+can use `Alpine.data()`.
 
 ```html
 <div x-data="product">
@@ -88,7 +91,8 @@ Woah, that's a lot! Let's break it down.
 
 <Callout text="`x-money` is an custom Alpine JS directive that replicates the `| money` filter." />
 
-Check out the [Alpine JS Money](https://github.com/markmead/alpinejs-money) plugin.
+Check out the [Alpine JS Money](https://github.com/markmead/alpinejs-money)
+plugin.
 
 First off, everything happens in the `init()` function from Alpine JS.
 
@@ -103,7 +107,8 @@ init() {
 }
 ```
 
-First, we are setting the `data` variable value to be the JSON product data that we can get from Liquid.
+First, we are setting the `data` variable value to be the JSON product data that
+we can get from Liquid.
 
 Then there's the two functions; `activeVariant()` and `listenForChange()`.
 
@@ -111,21 +116,28 @@ Here's what they're doing.
 
 **`activeVariant()`**
 
-This function calls another function `getVariantParam()` which returns the variant param from the URL, this value is then set to a local variable of `variantId`.
+This function calls another function `getVariantParam()` which returns the
+variant param from the URL, this value is then set to a local variable of
+`variantId`.
 
-If then checks the variants array in the `data` object for a match based on the `variantId`, if no match was found it defaults to the first variant in the variants array. It then sets the `variant` variable to the variant that's returned.
+If then checks the variants array in the `data` object for a match based on the
+`variantId`, if no match was found it defaults to the first variant in the
+variants array. It then sets the `variant` variable to the variant that's
+returned.
 
 <Callout text="The variants array is included within `{{ product | json }}`" />
 
 **`listenForChange()`**
 
-This sets up a `change` event listener on the document that calls `activeVariant()`, which allows us keep the `variant` variable up to date with user changes in the product form.
+This sets up a `change` event listener on the document that calls
+`activeVariant()`, which allows us keep the `variant` variable up to date with
+user changes in the product form.
 
 ## Get Shopify Product Data with Async/Await
 
-This is an alternative approach that uses the Shopify API and doesn't require many changes.
-
-It's worth noting that if you've added the following then you should be OK to remove it.
+This is an alternative approach that uses the Shopify API and doesn't require
+many changes. It's worth noting that if you've added the following then you
+should be OK to remove it.
 
 ```html
 <script type="application/json">
@@ -133,9 +145,11 @@ It's worth noting that if you've added the following then you should be OK to re
 </script>
 ```
 
-_Please do not remove this if you are using Dawn, or it was already in your theme._
+_Please do not remove this if you are using Dawn, or it was already in your
+theme._
 
-Using the Shopify API for this is as simple as updating the way we get the JSON product data in the `init()` function.
+Using the Shopify API for this is as simple as updating the way we get the JSON
+product data in the `init()` function.
 
 Here's the new function.
 
@@ -151,12 +165,22 @@ async init() {
 }
 ```
 
-This is using the Shopify API endpoint for the current product and gets the `data` from the response. Then we set the `data` variable to the data that is returned.
+This is using the Shopify API endpoint for the current product and gets the
+`data` from the response. Then we set the `data` variable to the data that is
+returned.
 
 From there it's business as usual.
 
-Which way is better? That's a personal choice. Personally, I prefer the first method of using `{{ product | json }}` as it's the approach Shopify have taken with Dawn and once explained, I believe it's easier to understand.
+Which way is better? That's a personal choice. Personally, I prefer the first
+method of using `{{ product | json }}` as it's the approach Shopify have taken
+with Dawn and once explained, I believe it's easier to understand.
 
-With the new Dawn theme, it ships with JavaScript that handles what's included in the basic example in this post. However, if you wanted to extend that then you have to start editing the base JavaScript that Shopify has shipped with Dawn.
+With the new Dawn theme, it ships with JavaScript that handles what's included
+in the basic example in this post. However, if you wanted to extend that then
+you have to start editing the base JavaScript that Shopify has shipped with
+Dawn.
 
-This isn't a huge issue and in fact is a great way to learn more about the Dawn theme, but you can easily run into complications. Therefore, I believe it's better to run Alpine JS alongside the Dawn JavaScript and gradually replace what it.
+This isn't a huge issue and in fact is a great way to learn more about the Dawn
+theme, but you can easily run into complications. Therefore, I believe it's
+better to run Alpine JS alongside the Dawn JavaScript and gradually replace what
+it.

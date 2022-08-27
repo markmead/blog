@@ -10,6 +10,11 @@ import matter from 'gray-matter'
 import path from 'path'
 
 import Prism from 'prismjs'
+import 'prismjs/components/prism-markup-templating.js'
+import 'prismjs/components/prism-php.js'
+import 'prismjs/components/prism-json.js'
+import 'prismjs/components/prism-ruby.js'
+import 'prismjs/components/prism-erb.js'
 
 import { postFilePaths, POSTS_PATH } from '../../utils/mdx'
 

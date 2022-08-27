@@ -29,7 +29,7 @@ export function getStaticProps() {
         filePath,
       }
     })
-    .sort((post) => post.data.date && -1)
+    .sort((postA, postB) => (postA.data.date < postB.data.date ? 0 : -1))
 
   return { props: { posts } }
 }

@@ -33,7 +33,7 @@ export default function Index({ posts, projects }) {
 
       <div className="flex justify-center">
         <Link href="/posts">
-          <a className="no-underline bg-gray-100 border border-gray-200 dark:bg-gray-800 dark:border-gray-700 rounded-lg px-5 py-3 block">
+          <a className="block px-5 py-3 no-underline bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
             <span className="text-sm font-normal">View all posts</span>
           </a>
         </Link>
@@ -54,7 +54,7 @@ export function getStaticProps() {
         filePath,
       }
     })
-    .sort((post) => post.data.date && -1)
+    .sort((postA, postB) => (postA.data.date < postB.data.date ? 0 : -1))
     .slice(0, 3)
 
   const projects = projectFilePaths
@@ -69,7 +69,9 @@ export function getStaticProps() {
       }
     })
     .filter((project) => project.data.featured)
-    .sort((project) => project.data.featured && -1)
+    .sort((projectA, projectB) =>
+      projectA.data.featured < projectB.data.featured ? 0 : -1
+    )
     .slice(0, 2)
 
   return { props: { posts, projects } }

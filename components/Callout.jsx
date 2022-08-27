@@ -18,7 +18,7 @@ export default function Callout({ theme, text }) {
   let renderColor = theme ? calloutStyles[theme] : calloutStyles.base
 
   return (
-    <div className={`flex rounded-lg border ${renderColor}`}>
+    <div className={`prose-callout flex rounded-lg border ${renderColor}`}>
       <span
         role="img"
         aria-hidden="true"
