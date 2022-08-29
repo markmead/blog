@@ -87,12 +87,8 @@ can use `Alpine.data()`.
 </script>
 ```
 
-Woah, that's a lot! Let's break it down.
-
-<Callout text="`x-money` is an custom Alpine JS directive that replicates the `| money` filter." />
-
-Check out the [Alpine JS Money](https://github.com/markmead/alpinejs-money)
-plugin.
+`x-money` is an custom Alpine JS directive that replicates the `| money` filter.
+Check it out here [Alpine JS Money](https://github.com/markmead/alpinejs-money).
 
 First off, everything happens in the `init()` function from Alpine JS.
 
@@ -125,7 +121,7 @@ If then checks the variants array in the `data` object for a match based on the
 variants array. It then sets the `variant` variable to the variant that's
 returned.
 
-<Callout text="The variants array is included within `{{ product | json }}`" />
+_The variants array is included within `{{ product | json }}`_
 
 **`listenForChange()`**
 

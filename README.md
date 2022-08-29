@@ -1,12 +1,13 @@
 # Mark Mead
 
-Here you can find the Next JS code that powers [markmead.dev](https://markmead.dev/).
+Here you can find the Next JS code that powers
+[markmead.dev](https://markmead.dev/).
 
 ### Versions
 
 **Aug 2022 - Present**
 
-Next JS + MDX Remote.
+Next JS + MD Remote.
 
 https://github.com/markmead/markmead.dev
 

@@ -510,10 +510,8 @@ There are a lot of different call back methods, you can see the full list here:
 
 [Active Record Callbacks - Ruby on Rails Guides](https://guides.rubyonrails.org/active_record_callbacks.html)
 
-<Callout
-  theme="error"
-  text="Be careful when when using `update` in a callback as it can cause an infinite loop, to avoid this use `update_columns`"
-/>
+_Be careful when when using `update` in a callback as it can cause an infinite
+loop, to avoid this use `update_columns`_
 
 ### Query TRUE/FALSE on Boolean Column
 
@@ -1472,7 +1470,8 @@ You can use `%W` if you need interpolation
 %w[Rails Tailwind HTML Stimulus]
 ```
 
-<Callout text="You can only use `%w` and `%W` on single words as the array splits on whitespace" />
+_You can only use `%w` and `%W` on single words as the array splits on
+whitespace_
 
 ### Create Array of Symbols
 
@@ -1486,7 +1485,8 @@ You can use `%I` if you need interpolation
 %i[new edit create update destroy]
 ```
 
-<Callout text="You can only use `%i` and `%I` on single words as the array splits on whitespace" />
+_You can only use `%i` and `%I` on single words as the array splits on
+whitespace_
 
 ### Calculate Sum of Values
 

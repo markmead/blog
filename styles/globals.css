@@ -39,7 +39,3 @@ a {
 .prose .token.keyword {
   @apply text-cyan-400;
 }
-
-.prose pre + .prose-callout {
-  @apply mt-[1.7142857em];
-}

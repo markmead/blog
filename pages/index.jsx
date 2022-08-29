@@ -9,7 +9,7 @@ import {
   POSTS_PATH,
   projectFilePaths,
   PROJECTS_PATH,
-} from '../utils/mdx'
+} from '../utils/markdown'
 
 import Posts from '../components/Posts'
 import Projects from '../components/Projects'

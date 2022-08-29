@@ -2,7 +2,8 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
 
-import { projectFilePaths, PROJECTS_PATH } from '../../utils/mdx'
+import { projectFilePaths, PROJECTS_PATH } from '../../utils/markdown'
+
 import Projects from '../../components/Projects'
 
 export default function ProjectsIndex({ projects }) {

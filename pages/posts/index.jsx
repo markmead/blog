@@ -2,7 +2,8 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
 
-import { postFilePaths, POSTS_PATH } from '../../utils/mdx'
+import { postFilePaths, POSTS_PATH } from '../../utils/markdown'
+
 import Posts from '../../components/Posts'
 
 export default function PostsIndex({ posts }) {
