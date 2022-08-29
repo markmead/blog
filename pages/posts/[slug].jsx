@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import Head from 'next/head'
 
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import Prism from 'prismjs'
 
 import 'prismjs/components/prism-markup-templating.js'
@@ -48,7 +49,7 @@ export default function PostPage({ source, frontMatter }) {
 
         <p className="lead">{frontMatter.description}</p>
 
-        <ReactMarkdown>{source}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{source}</ReactMarkdown>
       </article>
     </>
   )
@@ -59,8 +60,6 @@ export const getStaticProps = async ({ params }) => {
   const source = fs.readFileSync(postFilePath)
 
   const { content, data } = matter(source)
-
-  console.log(content)
 
   return {
     props: {

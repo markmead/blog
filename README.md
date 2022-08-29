@@ -7,7 +7,7 @@ Here you can find the Next JS code that powers
 
 **Aug 2022 - Present**
 
-Next JS + MD Remote.
+Next JS.
 
 https://github.com/markmead/markmead.dev
 
