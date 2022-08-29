@@ -1,13 +1,15 @@
 ---
 title: Jumpstart JavaScript - Variables
-description: Beginner friendly overview of how to declare variables in JavaScript.
+description:
+  Beginner friendly overview of how to declare variables in JavaScript.
 date: 2022/2/1
 tags: [javascript]
 ---
 
 ## Which One Should I Use?
 
-Start out using `const` for every variable and then switch to `let` when the variable needs to be re-assigned.
+Start out using `const` for every variable and then switch to `let` when the
+variable needs to be re-assigned.
 
 Avoid using `var` as it doesn't have block scope.
 
@@ -40,9 +42,8 @@ const person = {
 person.name = 'Jim'
 ```
 
-Both of these will work and update the variable as it's being mutated, not re-assigned.
-
-<Callout text="Start out writing mutatable JavaScript but take a look into immutable JavaScript." />
+Both of these will work and update the variable as it's being mutated, not
+re-assigned.
 
 [Understanding Immutability in JavaScript - Kingsley Silas](https://css-tricks.com/understanding-immutability-in-javascript/)
 
@@ -60,10 +61,7 @@ The `name` variable will now be "Jane".
 
 ## Var Overview
 
-<Callout
-  theme="error"
-  text="Avoid using `var` whenever possible as it lacks block scoping"
-/>
+> Avoid using `var` whenever possible as it lacks block scoping.
 
 ## What is Block Scope?
 
@@ -93,7 +91,9 @@ function addPerson() {
 console.log(name)
 ```
 
-The `name` variable will now be "Jane" as it was re-assigned in the function. This is problematic as it becomes difficult to understand where the change happens.
+The `name` variable will now be "Jane" as it was re-assigned in the function.
+This is problematic as it becomes difficult to understand where the change
+happens.
 
 However, when using `let` or `const` this is not the case.
 
@@ -125,4 +125,5 @@ console.log(name)
 addPerson()
 ```
 
-This is absolutely fine and will result in "John" and "Jane" being logged to the console.
+This is absolutely fine and will result in "John" and "Jane" being logged to the
+console.

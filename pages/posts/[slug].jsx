@@ -2,20 +2,20 @@ import { useEffect } from 'react'
 
 import Head from 'next/head'
 
-import { MDXRemote } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
-import dynamic from 'next/dynamic'
+import ReactMarkdown from 'react-markdown'
+import Prism from 'prismjs'
+
+import 'prismjs/components/prism-markup-templating.js'
+import 'prismjs/components/prism-php.js'
+import 'prismjs/components/prism-json.js'
+import 'prismjs/components/prism-ruby.js'
+import 'prismjs/components/prism-erb.js'
+
 import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
 
-import Prism from 'prismjs'
-
-import { postFilePaths, POSTS_PATH } from '../../utils/mdx'
-
-const components = {
-  Callout: dynamic(() => import('../../components/Callout')),
-}
+import { postFilePaths, POSTS_PATH } from '../../utils/markdown'
 
 export default function PostPage({ source, frontMatter }) {
   useEffect(() => {
@@ -48,29 +48,23 @@ export default function PostPage({ source, frontMatter }) {
 
         <p className="lead">{frontMatter.description}</p>
 
-        <MDXRemote {...source} components={components} />
+        <ReactMarkdown>{source}</ReactMarkdown>
       </article>
     </>
   )
 }
 
 export const getStaticProps = async ({ params }) => {
-  const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
+  const postFilePath = path.join(POSTS_PATH, `${params.slug}.md`)
   const source = fs.readFileSync(postFilePath)
 
   const { content, data } = matter(source)
 
-  const mdxSource = await serialize(content, {
-    mdxOptions: {
-      remarkPlugins: [],
-      rehypePlugins: [],
-    },
-    scope: data,
-  })
+  console.log(content)
 
   return {
     props: {
-      source: mdxSource,
+      source: content,
       frontMatter: data,
     },
   }
@@ -78,7 +72,7 @@ export const getStaticProps = async ({ params }) => {
 
 export const getStaticPaths = async () => {
   const paths = postFilePaths
-    .map((path) => path.replace(/\.mdx?$/, ''))
+    .map((path) => path.replace(/\.md?$/, ''))
     .map((slug) => ({ params: { slug } }))
 
   return {

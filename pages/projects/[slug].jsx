@@ -1,25 +1,16 @@
-import { useEffect } from 'react'
-
 import Head from 'next/head'
 
-import { MDXRemote } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
-import dynamic from 'next/dynamic'
+import ReactMarkdown from 'react-markdown'
+
 import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
 
-import Prism from 'prismjs'
-
-import { projectFilePaths, PROJECTS_PATH } from '../../utils/mdx'
+import { projectFilePaths, PROJECTS_PATH } from '../../utils/markdown'
 
 const components = {}
 
-export default function PostPage({ source, frontMatter }) {
-  useEffect(() => {
-    Prism.highlightAll()
-  })
-
+export default function ProjectPage({ source, frontMatter }) {
   return (
     <>
       <Head>
@@ -46,29 +37,21 @@ export default function PostPage({ source, frontMatter }) {
 
         <p className="lead">{frontMatter.description}</p>
 
-        <MDXRemote {...source} components={components} />
+        <ReactMarkdown>{source}</ReactMarkdown>
       </article>
     </>
   )
 }
 
 export const getStaticProps = async ({ params }) => {
-  const postFilePath = path.join(PROJECTS_PATH, `${params.slug}.mdx`)
+  const postFilePath = path.join(PROJECTS_PATH, `${params.slug}.md`)
   const source = fs.readFileSync(postFilePath)
 
   const { content, data } = matter(source)
 
-  const mdxSource = await serialize(content, {
-    mdxOptions: {
-      remarkPlugins: [],
-      rehypePlugins: [],
-    },
-    scope: data,
-  })
-
   return {
     props: {
-      source: mdxSource,
+      source: content,
       frontMatter: data,
     },
   }
@@ -76,7 +59,7 @@ export const getStaticProps = async ({ params }) => {
 
 export const getStaticPaths = async () => {
   const paths = projectFilePaths
-    .map((path) => path.replace(/\.mdx?$/, ''))
+    .map((path) => path.replace(/\.md?$/, ''))
     .map((slug) => ({ params: { slug } }))
 
   return {
