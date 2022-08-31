@@ -125,6 +125,14 @@ done this as a Blade component.
 - Creating a unique function through the `id` prop
 - Pushing that unique function to the `scripts` stack
 
+What is `@this.handleRecaptcha(captchaToken)` doing?
+
+The use of `@this` will trigger the `handleRecaptcha` function on the current
+Livewire component.
+
+And the `captchaToken` is what is returned from Google reCaptcha when it's been
+interacted with.
+
 If you haven't already make sure you add `@stack('scripts')` to your layout.
 
 ### Connecting to a Livewire Component
