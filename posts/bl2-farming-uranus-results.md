@@ -9,7 +9,8 @@ In the Borderlands 2 DLC "Commander Lilith & the Fight for Sanctuary" there's a
 boss called Uranus which has an extremely high drop rate of legendaries,
 pearlescents and effervescent items.
 
-Due to this drop rate, I thought I'd farm Uranus a bunch and record what I find.
+Due to this drop rate, I thought I'd farm the boss a bunch and record what I
+find.
 
 | Run | Loot                                                                                              | Count |
 | --- | ------------------------------------------------------------------------------------------------- | ----- |
@@ -71,7 +72,7 @@ Due to this drop rate, I thought I'd farm Uranus a bunch and record what I find.
 | 56  | Marxmans Gub, Taktikal Sawbar                                                                     | 2     |
 | 57  | Technical Spectacle, Lobbed Bouncing Bonny (Fire)                                                 | 2     |
 | 58  | Legendary Berserker                                                                               | 1     |
-| 59  | Legendary Berserker, Analytical Bitch, The Electric Chair                                         | 3     |
+| 59  | Legendary Berserker, Analytical Fatale, The Electric Chair                                        | 3     |
 | 60  | Homing Fire Bee, Technical Spectacle                                                              | 2     |
 |     | Total                                                                                             | 75    |
 
