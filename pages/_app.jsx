@@ -28,7 +28,22 @@ function MyApp({ Component, pageProps }) {
           content="Creator of HyperUI and an eCommerce developer using the TALL stack and Shopify."
           key="og:description"
         />
-
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.markmead.dev/" />
+        <meta property="og:image" content="https://www.markmead.dev/og.jpg" />
+        <meta
+          name="twitter:title"
+          content="Web Developer | Mark Mead"
+          key="twitter:title"
+        />
+        <meta
+          name="twitter:description"
+          content="Creator of HyperUI and an eCommerce developer using the TALL stack and Shopify."
+          key="twitter:description"
+        />
+        <meta name="twitter:image" content="https://www.markmead.dev/og.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://www.markmead.dev/" />
         <link rel="icon" href="https://fav.farm/💐" />
       </Head>
 
