@@ -19,6 +19,20 @@ import path from 'path'
 import { postFilePaths, POSTS_PATH } from '../../utils/markdown'
 
 export default function PostPage({ source, frontMatter }) {
+  const schemaData = {
+    '@context': 'http://schema.org',
+    '@type': 'NewsArticle',
+    headline: `${frontMatter.title}`,
+    image: ['https://www.markmead.dev/og.jpg'],
+    datePublished: `${frontMatter.date}`,
+    dateModified: `${frontMatter.date}`,
+    author: {
+      '@type': 'Person',
+      name: 'Mark Mead',
+      url: 'https://twitter.com/itsmarkmead',
+    },
+  }
+
   useEffect(() => {
     Prism.highlightAll()
   })
@@ -26,6 +40,11 @@ export default function PostPage({ source, frontMatter }) {
   return (
     <>
       <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        />
+
         <title>{frontMatter.title} | Mark Mead</title>
         <meta
           name="description"
