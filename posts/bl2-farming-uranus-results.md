@@ -1,7 +1,7 @@
 ---
 title: Results of Farming Uranus 60 Times in Borderlands 2
 description: How many rare items will I get? Spoiler. A lot.
-date: 2022/8/30
+date: 2022/08/30
 tags: [gaming, borderlands]
 ---
 
