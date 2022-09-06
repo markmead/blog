@@ -17,7 +17,7 @@ the project, I've added mine in `config/services.php`.
 ],
 ```
 
-Now I can reference them like so.
+Now we can reference them like so.
 
 ```php
 config('services.recaptcha.key')
@@ -26,7 +26,7 @@ config('services.recaptcha.secret')
 
 ---
 
-## Adding Google reCaptcha
+## Initialising Google reCaptcha
 
 We need to add the Google reCaptcha JavaScript code to our project. Inside the
 layout add the following to the `<head>`.
@@ -39,14 +39,13 @@ layout add the following to the `<head>`.
 ></script>
 ```
 
-Here we're declaring there's an `onload` even called `handleRecaptchaLoad` but
-we need to handle that function, here's how we do that.
+Here we're declaring there's an `onload` event which triggers the `handleRecaptchaLoad` function.
 
 Add the following before the `</body>` tag.
 
 ```html
 <script>
-  let captchaIds = ['firstRecaptcha', 'secondRecaptcha', 'thirdRecaptcha', 'fourthRecaptcha']
+  let captchaIds = ['recaptchaA', 'recaptchaB', 'recaptchaC', 'recaptchaD']
 
   function handleRecaptchaLoad() {
       captchaIds.forEach((captchaId) => {
@@ -75,28 +74,46 @@ Add the following before the `</body>` tag.
 </script>
 ```
 
-**What?**
+**What's Happening?**
 
-We have the `handleRecaptchaLoad` function which loops through the `captchaIds`
+The `handleRecaptchaLoad` function loops through the `captchaIds`
 array and does the following.
 
-- Checks an element exists with the `id`
+- Checks an element exists with that `id`
 - Initalises and renders a Google reCaptcha on that element
-- Adds a callback to the function created through the Blade component
+- Adds a callback to the function based on the `id`
 
-**Why?**
+This will create callback function name such as `recaptchaASubmit`.
+
+**Why This Approach?**
 
 This allows for multiple Google reCaptcha components on the same page without
-them interfering with eachother. If that isn't a requirement for your project
-then don't worry, this approach still works.
+them interfering with eachother.
 
-There's also an event listener on the window listening for a custot event, when
+It works fine with a single Google reCaptcha component as well, but if you want to remove the extra code, you do this.
+
+```js
+  function handleRecaptchaLoad() {
+    grecaptcha.render(
+        captchaId, {
+            'sitekey': '{{ config('services.recaptcha.key') }}',
+            'callback': 'recaptchaComponentSubmit'
+        }
+    )
+  };
+
+    window.addEventListener('reset-google-recaptcha', () => {
+        grecaptcha.reset('recaptchaComponentSubmit')
+    })
+```
+
+There's an event listener on the window which listens for a custom event `reset-google-recaptcha`, when
 this is triggered it will reset the Google reCaptcha components. This is
 required when using Livewire as the page does not reload.
 
 ## Google reCaptcha Blade Component
 
-Next, we need to add some markup for the Google reCaptcha to hook into, I've
+We need to add some markup for the Google reCaptcha to hook into, I've
 done this as a Blade component.
 
 ```shell
@@ -120,27 +137,27 @@ done this as a Blade component.
 </div>
 ```
 
-**What?**
+**What's Happening?**
+
+This component accepts a single prop of `id` and does the following:
 
 - Creating a unique function through the `id` prop
 - Pushing that unique function to the `scripts` stack
 
-What is `@this.handleRecaptcha(captchaToken)` doing?
+This unique function matches up to the callback functions declared in the `handleRecaptchaLoad` function.
 
-The use of `@this` will trigger the `handleRecaptcha` function on the current
-Livewire component.
+**Talking to Livewire**
 
-And the `captchaToken` is what is returned from Google reCaptcha when it's been
-interacted with.
+Through the use of `@this.handleRecaptcha(captchaToken)` we are passing the response from the Google reCaptcha (`captchaToken`) to Livewire.
 
-If you haven't already make sure you add `@stack('scripts')` to your layout.
+_If you haven't already make sure you add `@stack('scripts')` to your layout._
 
 ### Connecting to a Livewire Component
 
-It's time to hook the Google reCaptcha component to Livewire. In this example
+We now need to hook the Google reCaptcha component to Livewire. In this example
 I'll be using a Livewire component called `Contact.php`.
 
-First off, add the Blade component to the form within
+First, we need to add the Blade component to the form within
 `livewire/contact.blade.php`.
 
 ```html
@@ -149,8 +166,7 @@ First off, add the Blade component to the form within
 </form>
 ```
 
-Next, we need to add the state and methods to the Livewire component so it can
-submit the form and track if the Google reCaptcha has been verified.
+On the Livewire component it needs state and methods so it can track if the Google reCaptcha has been verified and handle submitting the form.
 
 ```php
 class Contact extends Component
@@ -193,8 +209,10 @@ class Contact extends Component
 }
 ```
 
-Notice the use of the `InteractsWithRecaptcha` trait, this isn't required but if
-you're working with multiple Google reCaptcha components then it's recommended.
+We're using a custom trait called `InteractsWithRecaptcha`.
+
+It's not required but if you're working with multiple Google reCaptcha components then it's recommended.
+
 Here's what that looks like.
 
 ```php
@@ -217,22 +235,23 @@ trait InteractsWithRecaptcha
 }
 ```
 
-The main function `validateRecaptchaRequest` which is called from the Livewire
-components `handleRecaptcha` function hits the Google reCaptcha endpoint to
-verify the request.
+In the `handleRecaptcha` function on the Livewire component we are calling `validateRecaptchaRequest` which hits the Google reCaptcha API endpoint to verify the request and return if it was a successful or not.
 
-It then gets the response and returns the `success` value which will be either
-`true / false`.
+On the Livewire component, the returned value from the API becomes the `recaptcha` state. 
 
-On the Livewire component, this value is then used the the `recaptcha` state. If
-it returns `false` then the validation will fail when the form is submitted via
-the `submitForm` function and an error message will be shown, if it's `true`
+If it returns `false` then the validation will fail when the form is submitted, if it's `true`
 then the form will submit.
 
 When the form submits we are using the Livewire function `reset()` to reset the
-Livewire components state and then calling the `resetRecaptchaComponent` on the
-trait, this uses the Livewire `dispatchBrowserEvent` function to emit the event
-`reset-google-recaptcha` to the window.
+Livewire components state, we are then calling the `resetRecaptchaComponent` on the
+trait, which uses the Livewire `dispatchBrowserEvent` function to emit the event
+`reset-google-recaptcha` to the DOM window.
 
-This is then listened for in the global JavaScript that was added to the layout
-and resets all the Google reCaptcha components.
+When `reset-google-recaptcha` is triggered it resets the Google reCaptcha components.
+
+---
+
+And there we have it, a working Google reCaptcha with Livewire.
+
+Hopefully this isn't too confusing, there's a lot of pieces talking to eachother spread across files, but once the logic has been added to the project it becomes a lot easier to follow.
+
