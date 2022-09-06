@@ -1,6 +1,6 @@
 ---
 title: The Ultimate Ruby on Rails Cheatsheet
-description: How you can fix Livewire ignoring your localized routes.
+description: Digestable Ruby on Rails information to help you with development.
 date: 2021/10/20
 tags: [ruby, ruby on rails]
 ---

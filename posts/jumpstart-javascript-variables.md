@@ -2,7 +2,7 @@
 title: Jumpstart JavaScript - Variables
 description:
   Beginner friendly overview of how to declare variables in JavaScript.
-date: 2022/2/1
+date: 2022/02/01
 tags: [javascript]
 ---
 

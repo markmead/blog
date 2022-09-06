@@ -1,7 +1,7 @@
 ---
 title: How to Fix Livewire Ignoring Localization in Routes
 description: How you can fix Livewire ignoring your localized routes.
-date: 2022/5/25
+date: 2022/05/25
 tags: [laravel, livewire]
 ---
 
