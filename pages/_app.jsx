@@ -2,7 +2,6 @@ import '../styles/globals.css'
 import 'prismjs/themes/prism-okaidia.css'
 
 import Head from 'next/head'
-import Script from 'next/script'
 
 import Layout from '../components/Layout'
 import Header from '../components/Header'
@@ -46,23 +45,6 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:url" content="https://www.markmead.dev/" />
         <link rel="icon" href="https://fav.farm/💐" />
       </Head>
-
-      <Script
-        strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-6JVZMZE949"
-      />
-
-      <Script
-        id="gtag-init"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-              window.dataLayer=window.dataLayer||[]
-              function gtag(){dataLayer.push(arguments)}
-              gtag('js',new Date)
-              gtag('config','G-6JVZMZE949')`,
-        }}
-      />
 
       <div className="bg-white dark:bg-gray-900">
         <div className="flex flex-col justify-between max-w-2xl min-h-screen p-4 mx-auto sm:py-8">
