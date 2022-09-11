@@ -60,18 +60,18 @@ Add the following before the `</body>` tag.
                   'callback': `${captchaId}Submit`
               }
           )
-      });
-  };
+      })
+  }
 
-    window.addEventListener('reset-google-recaptcha', () => {
-        captchaIds.forEach((captchaId) => {
-            if (!document.getElementById(captchaId)) {
-                return
-            }
+  window.addEventListener('reset-google-recaptcha', () => {
+      captchaIds.forEach((captchaId) => {
+          if (!document.getElementById(captchaId)) {
+              return
+          }
 
-            grecaptcha.reset(captchaId)
-        });
-    })
+          grecaptcha.reset(captchaId)
+      })
+  })
 </script>
 ```
 
@@ -95,18 +95,18 @@ It works fine with a single Google reCaptcha component as well, but if you want
 to remove the extra code, you do this.
 
 ```js
-  function handleRecaptchaLoad() {
+function handleRecaptchaLoad() {
     grecaptcha.render(
         captchaId, {
             'sitekey': '{{ config('services.recaptcha.key') }}',
             'callback': 'recaptchaComponentSubmit'
         }
     )
-  };
+}
 
-    window.addEventListener('reset-google-recaptcha', () => {
-        grecaptcha.reset('recaptchaComponentSubmit')
-    })
+window.addEventListener('reset-google-recaptcha', () => {
+    grecaptcha.reset('recaptchaComponentSubmit')
+})
 ```
 
 There's an event listener on the window which listens for a custom event
@@ -119,7 +119,7 @@ reload.
 We need to add some markup for the Google reCaptcha to hook into, I've done this
 as a Blade component.
 
-```shell
+```blade
 @props(['id'])
 
 @push('scripts')

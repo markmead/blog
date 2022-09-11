@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="https://fav.farm/💐" />
       </Head>
 
-      <div className="bg-white dark:bg-gray-900">
+      <div className="bg-white dark:bg-slate-900">
         <div className="flex flex-col justify-between max-w-2xl min-h-screen p-4 mx-auto sm:py-8">
           <div>
             <Header />

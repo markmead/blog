@@ -9,7 +9,7 @@ a {
 }
 
 .prose pre[class*='language-'] {
-  @apply p-4 m-0 rounded-xl border bg-gray-900 border-gray-800 dark:bg-gray-800 dark:border-gray-700;
+  @apply p-4 m-0 rounded-xl border bg-slate-900 border-slate-800 dark:bg-slate-800 dark:border-slate-700;
 }
 
 .prose .token:is(.property, .tag, .constant, .symbol, .deleted) {
@@ -25,7 +25,7 @@ a {
 }
 
 .prose .token:is(.comment, .prolog, .doctype, .cdata) {
-  @apply text-gray-400;
+  @apply text-slate-400;
 }
 
 .prose .token:is(.operator, .entity, .url, .variable) {
