@@ -5,55 +5,50 @@ export default function Uses() {
 
       <p className="lead">
         Here's the tack stack that I use. As for hardware I use one item, my
-        MacBook Pro (14-inch, 2021). Last update was on the 20th Aug, 2022.
+        MacBook Pro (14-inch, 2021). Last update was on the 15th September,
+        2022.
       </p>
 
       <h2>Current</h2>
 
       <ul>
-        <li>PHP</li>
+        <li>Alpine JS</li>
+        <li>Docker (Lando)</li>
+        <li>Figma</li>
+        <li>GetCandy</li>
+        <li>Hyper (ZSH)</li>
+        <li>JavaScript</li>
         <li>Laravel</li>
         <li>Livewire</li>
         <li>MySQL</li>
-        <li>Shopify</li>
-        <li>GetCandy</li>
-        <li>CSS</li>
-        <li>Tailwind CSS</li>
-        <li>JavaScript</li>
-        <li>Alpine JS</li>
-        <li>Vue JS (Nuxt JS)</li>
+        <li>PHP</li>
         <li>React JS (Next JS)</li>
-        <li>Docker (Lando)</li>
+        <li>Shopify</li>
         <li>TablePlus</li>
-        <li>Hyper (ZSH)</li>
+        <li>Tailwind CSS</li>
         <li>Visual Studio Code</li>
-        <li>Figma</li>
-        <li>Stripe</li>
-        <li>Opayo</li>
-        <li>PayPal</li>
-        <li>Klarna</li>
+        <li>Vue JS (Nuxt JS)</li>
       </ul>
 
       <h2>Previous</h2>
 
       <ul>
-        <li>Ruby</li>
-        <li>Ruby on Rails</li>
-        <li>PostgreSQL</li>
-        <li>Solidus</li>
-        <li>Spree</li>
-        <li>SASS</li>
-        <li>SCSS</li>
+        <li>Adobe XD</li>
+        <li>Atom</li>
         <li>Bootstrap</li>
         <li>Foundation</li>
-        <li>jQuery</li>
-        <li>Stimulus JS</li>
-        <li>iTerm 2</li>
-        <li>Atom</li>
-        <li>Sublime 3</li>
-        <li>Adobe XD</li>
-        <li>ResponsivelyApp</li>
         <li>Heroku</li>
+        <li>iTerm 2</li>
+        <li>jQuery</li>
+        <li>PostgreSQL</li>
+        <li>ResponsivelyApp</li>
+        <li>Ruby on Rails</li>
+        <li>Ruby</li>
+        <li>SASS</li>
+        <li>SCSS</li>
+        <li>Solidus</li>
+        <li>Stimulus JS</li>
+        <li>Sublime 3</li>
       </ul>
     </article>
   )
