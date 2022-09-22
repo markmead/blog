@@ -3,6 +3,8 @@ const path = require('path')
 const Feed = require('feed').Feed
 const matter = require('gray-matter')
 const fetch = require('node-fetch')
+const showdown = require('showdown')
+const converter = new showdown.Converter({ tables: 'true' })
 
 async function generate() {
   const rssFeed = new Feed({
@@ -48,7 +50,7 @@ async function generate() {
         id: postSlug,
         link: `https://www.markmead.dev/blog/${postSlug}`,
         description: postData.description,
-        content: postMarkdown,
+        content: converter.makeHtml(postMarkdown),
         author: [
           {
             name: 'Mark Mead',
