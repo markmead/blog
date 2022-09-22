@@ -35,16 +35,20 @@ async function generate() {
       )
 
       const postFrontmatter = matter(postContent)
-      const { data: postData } = postFrontmatter
+      const { data: postData, content: postMarkdown } = postFrontmatter
 
       const postSlug = postName.replace(/\.md?/, '')
+
+      const convertedPostTags = postData.tags.map((postTag) => ({
+        name: postTag,
+      }))
 
       rssFeed.addItem({
         title: postData.title,
         id: postSlug,
         link: `https://www.markmead.dev/blog/${postSlug}`,
         description: postData.description,
-        content: postData.content,
+        content: postMarkdown,
         author: [
           {
             name: 'Mark Mead',
@@ -52,10 +56,15 @@ async function generate() {
           },
         ],
         date: new Date(postData.date),
+        category: convertedPostTags,
       })
     })
   ).then(() => {
     hyperData.items.map(async (hyperPost) => {
+      const convertedPostTags = hyperPost.tags.map((postTag) => ({
+        name: postTag,
+      }))
+
       rssFeed.addItem({
         title: hyperPost.title,
         id: hyperPost.id,
@@ -69,6 +78,7 @@ async function generate() {
           },
         ],
         date: new Date(hyperPost.date_modified),
+        category: convertedPostTags,
       })
     })
   })
