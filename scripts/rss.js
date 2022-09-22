@@ -72,7 +72,7 @@ async function generate() {
         id: hyperPost.id,
         link: hyperPost.url,
         description: hyperPost.description,
-        content: hyperPost.content_html,
+        content: converter.makeHtml(hyperPost.content_html),
         author: [
           {
             name: hyperPost.author.name,
