@@ -5,7 +5,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "rss": "node ./scripts/rss.js"
+    "rss": "node ./scripts/rss.js",
+    "postbuild": "yarn rss"
   },
   "dependencies": {
     "next": "latest",
