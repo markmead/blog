@@ -23,10 +23,8 @@ async function generate() {
     },
   })
 
-  const response = await fetch(
-    'https://hyperui-git-feat-blog-rss-feed-markmead.vercel.app/rss.json'
-  )
-  const data = await response.json()
+  const hyperPosts = await fetch('https://www.hyperui.dev/rss.json')
+  const hyperData = await response.json()
 
   const posts = await fs.readdir(path.join(__dirname, '..', 'posts'))
 
@@ -56,7 +54,7 @@ async function generate() {
       })
     })
   ).then(() => {
-    data.items.map(async (post) => {
+    hyperData.items.map(async (post) => {
       feed.addItem({
         title: post.title,
         id: post.id,
