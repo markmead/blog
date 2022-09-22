@@ -5,7 +5,7 @@ const matter = require('gray-matter')
 const fetch = require('node-fetch')
 
 async function generate() {
-  const feed = new Feed({
+  const rssFeed = new Feed({
     title: 'Mark Mead',
     description: 'RSS feed for blog posts.',
     id: 'https://www.markmead.dev/',
@@ -24,57 +24,58 @@ async function generate() {
   })
 
   const hyperPosts = await fetch('https://www.hyperui.dev/rss.json')
-  const hyperData = await response.json()
+  const hyperData = await hyperPosts.json()
 
-  const posts = await fs.readdir(path.join(__dirname, '..', 'posts'))
+  const selfPosts = await fs.readdir(path.join(__dirname, '..', 'posts'))
 
   await Promise.all(
-    posts.map(async (name) => {
-      const content = await fs.readFile(
-        path.join(__dirname, '..', 'posts', name)
+    selfPosts.map(async (postName) => {
+      const postContent = await fs.readFile(
+        path.join(__dirname, '..', 'posts', postName)
       )
 
-      const frontmatter = matter(content)
+      const postFrontmatter = matter(postContent)
+      const { data: postData } = postFrontmatter
 
-      const slug = name.replace(/\.md?/, '')
+      const postSlug = postName.replace(/\.md?/, '')
 
-      feed.addItem({
-        title: frontmatter.data.title,
-        id: slug,
-        link: `https://www.markmead.dev/blog/${slug}`,
-        description: frontmatter.data.description,
-        content: frontmatter.content,
+      rssFeed.addItem({
+        title: postData.title,
+        id: postSlug,
+        link: `https://www.markmead.dev/blog/${postSlug}`,
+        description: postData.description,
+        content: postData.content,
         author: [
           {
             name: 'Mark Mead',
             link: 'https://www.markmead.dev/',
           },
         ],
-        date: new Date(frontmatter.data.date),
+        date: new Date(postData.date),
       })
     })
   ).then(() => {
-    hyperData.items.map(async (post) => {
-      feed.addItem({
-        title: post.title,
-        id: post.id,
-        link: post.url,
-        description: post.description,
-        content: post.content_html,
+    hyperData.items.map(async (hyperPost) => {
+      rssFeed.addItem({
+        title: hyperPost.title,
+        id: hyperPost.id,
+        link: hyperPost.url,
+        description: hyperPost.description,
+        content: hyperPost.content_html,
         author: [
           {
-            name: post.author.name,
-            link: post.author.url,
+            name: hyperPost.author.name,
+            link: hyperPost.author.url,
           },
         ],
-        date: new Date(post.date_modified),
+        date: new Date(hyperPost.date_modified),
       })
     })
   })
 
-  await fs.writeFile('./public/rss.xml', feed.rss2())
-  await fs.writeFile('./public/rss.json', feed.json1())
-  await fs.writeFile('./public/rss.atom', feed.atom1())
+  await fs.writeFile('./public/rss.xml', rssFeed.rss2())
+  await fs.writeFile('./public/rss.json', rssFeed.json1())
+  await fs.writeFile('./public/rss.atom', rssFeed.atom1())
 }
 
 generate()
