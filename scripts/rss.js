@@ -60,7 +60,7 @@ async function generate() {
       feed.addItem({
         title: post.title,
         id: post.id,
-        link: `https://www.markmead.dev/blog/${post.id}`,
+        link: post.url,
         description: post.description,
         content: post.content_html,
         author: [
