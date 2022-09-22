@@ -19,7 +19,6 @@
     "autoprefixer": "^10.4.8",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.2",
-    "node-fetch": "2",
     "postcss": "^8.4.16",
     "prismjs": "^1.28.0",
     "react-markdown": "^8.0.3",
