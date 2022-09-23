@@ -11,6 +11,7 @@ import 'prismjs/components/prism-php.js'
 import 'prismjs/components/prism-json.js'
 import 'prismjs/components/prism-ruby.js'
 import 'prismjs/components/prism-erb.js'
+import 'prismjs/components/prism-haml.js'
 
 import fs from 'fs'
 import matter from 'gray-matter'
