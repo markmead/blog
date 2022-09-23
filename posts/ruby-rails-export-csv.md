@@ -1,33 +1,38 @@
 ---
 title: How to Export a CSV in Ruby on Rails
 description: Find out how to export a CSV in Ruby on Rails for models.
-date: 2021/11/15
+date: 2022/02/15
 tags: [ruby, rails]
 ---
 
-Exporting a CSV in Ruby on Rails is a simple task, but what if you want it to be
-filtered? For me, this was a speedbump in a recent project. Therefore, to avoid
-that and maintain full steam ahead I have written up this blog.
+_This is an old post that I have updated, I no longer use Ruby on Rails._
 
-This is specific to an application I was working on, but you can easily extract
-the concepts and code to be used on any other Ruby on Rails application that
-needs filtered CSV exporting.
+Exporting a CSV in Ruby on Rails is a simple task, but what if you want to
+filter the data? OK, it's probably still easy for a lot of you, but for me this
+was a speedbump in a project I worked on.
 
-The application I was working on had a `users` table and a `subscriptions`
-table, the subscriptions table managed the user's subscription and allowed
-queries to check if the user's subscription status was `subscribed`, `canceled`,
-and `inactive`. This was all powered by the
-[pay gem](https://github.com/pay-rails/pay) by Chris Oliver.
+But before we begin, what is this project?
 
-The application currently offered to filter users by the three subscription
-statuses, but could not export the users with these filters.
+It's a subscription website powered by
+[Pay Rails](https://github.com/pay-rails/pay) which comes with a `Subscription`
+model that belongs to a `User` model.
 
-So I needed to make a few changes:
+In the CMS you can view users and filter them by their subscription status.
 
-## Model
+- Subscribed
+- Canceled
+- Inactive
 
-I added the following method to generate the CSV based on parameters passed from
-the controller:
+However, you cannot export the results. Let's add that now.
+
+First we need to make some changes.
+
+## User Model
+
+I added `require 'csv'` to the top of the file.
+
+And I added this method to generate the CSV based on parameters passed from the
+controller.
 
 ```ruby
 def self.to_csv(records = [])
@@ -43,18 +48,8 @@ def self.to_csv(records = [])
 end
 ```
 
-The following scopes were already in use but are vital:
-
-```ruby
-scope :subscribed, -> { left_outer_joins(:subscriptions).where("subscriptions.status = ?", "active") }
-scope :canceled, -> { left_outer_joins(:subscriptions).where("subscriptions.status = ?", "canceled") }
-scope :inactive, -> { where(processor: nil) }
-```
-
-You will need to include `require 'csv'` at the top of the file.
-
-If you are using the pay gem then note that the `status` method used in the
-`attributes` array does not exist, I had to create that:
+There is no such thing as `status` on the `User` model, therefore I made a
+method which looks like this:
 
 ```ruby
 def status
@@ -62,15 +57,23 @@ def status
 end
 ```
 
+Here are the the scopes used for the filtering.
+
+```ruby
+scope :subscribed, -> { left_outer_joins(:subscriptions).where("subscriptions.status = ?", "active") }
+scope :canceled, -> { left_outer_joins(:subscriptions).where("subscriptions.status = ?", "canceled") }
+scope :inactive, -> { where(processor: nil) }
+```
+
 ## View
 
-I added a `link_to` that includes the current params:
+I added a `link_to` that includes the current page params:
 
 ```erb
 <%= link_to("Download CSV", users_path(request.params.merge(format: :csv))) %>
 ```
 
-There was already a form in place for the filtering:
+Here is the form used for the filtering.
 
 ```erb
 <%= form_with(url: users_path, local: true, method: :get)) do |f| %>
@@ -82,8 +85,7 @@ There was already a form in place for the filtering:
 
 ## Controller
 
-I updated the controllers `index` action to include a response for a CSV format
-request:
+I updated the controllers `index` action to include a response for a CSV format.
 
 ```ruby
 def index
@@ -102,15 +104,16 @@ def index
 end
 ```
 
-This uses the scopes created in the user model to filter the `@users` instance
-variable, if there are no params passed it will default to the first `@users`
-declaration.
+This uses the scopes created in the `User` model to filter the `@users` instance
+variable, if there are no params passed it defaults to the first `@users`
+declaration which returns all the users.
 
-There's also a `csv_name` variable that's created to allow for better naming:
+There's a `csv_name` variable that's created to allow for better naming:
 
 - `subscribed-users-2021-01-01.csv`
 - `canceled-users-2021-01-01.csv`
 - `inactive-users-2021-01-01.csv`
 
-The `csv_name` variable might be better off in the user model, it's a personal
-preference.
+And that's all I had to do, it was quite easy in the end and it _apparently_
+added a lot of value for the client, I'm not too sure how but it isn't my place
+to argue.
