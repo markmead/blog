@@ -2,7 +2,7 @@
 title: How to Export a CSV in Ruby on Rails
 description: Find out how to export a CSV in Ruby on Rails for models.
 date: 2021/11/15
-tags: [ruby, ruby on rails]
+tags: [ruby, rails]
 ---
 
 Exporting a CSV in Ruby on Rails is a simple task, but what if you want it to be

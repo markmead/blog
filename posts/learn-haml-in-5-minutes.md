@@ -2,7 +2,7 @@
 title: Learn HAML in 5 Minutes
 description: Get started with HAML quickly and write beautiful markup.
 date: 2021/11/15
-tags: [ruby, ruby on rails]
+tags: [ruby, rails]
 ---
 
 In short, HAML is a faster way to write HTML and is very common in Ruby on Rails

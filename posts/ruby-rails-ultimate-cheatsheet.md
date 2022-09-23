@@ -2,7 +2,7 @@
 title: The Ultimate Ruby on Rails Cheatsheet
 description: Digestable Ruby on Rails information to help you with development.
 date: 2021/10/20
-tags: [ruby, ruby on rails]
+tags: [ruby, rails]
 ---
 
 # The Ultimate Ruby on Rails
