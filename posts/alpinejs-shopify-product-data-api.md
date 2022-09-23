@@ -2,7 +2,7 @@
 title: How to Get Product Data from Shopify with Alpine JS
 description: Learn how you can use Alpine JS to fetch product data in Shopify.
 date: 2021/12/30
-tags: [alpinejs, javascript, shopify, api]
+tags: [alpinejs, javascript, shopify]
 ---
 
 In this post we will go over two methods of getting product data from the

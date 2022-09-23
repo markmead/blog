@@ -2,7 +2,7 @@
 title: How to Use Alpine JS with Hotwire
 description: There are some issues with Alpine JS + Hotwire, let's fix that.
 date: 2021/11/10
-tags: [ruby, ruby on rails]
+tags: [ruby, rails, alpinejs]
 ---
 
 There's some new spice in Ruby on Rails... [Hotwire ⚡️](https://hotwire.dev/)
