@@ -1,7 +1,7 @@
 ---
-title: Shopify Add to Cart with Vanilla JS
-description: Easily create an autogrowing textarea with Alpine JS.
-date: 2021/12/10
+title: Alpine JS Directive to Render Money in Shopify
+description: How to render money in Shopify with Alpine JS.
+date: 2022/08/05
 tags: [javascript, shopify]
 ---
 

@@ -1,12 +1,9 @@
 ---
-title: Shopify Add to Cart with Vanilla JS
-description: Easily create an autogrowing textarea with Alpine JS.
-date: 2021/11/20
-tags: [javascript, shopify]
+title: How to Add Blogs to DEV.to with Nuxt JS
+description: Find out how you can use Nuxt JS to auto add your blogs to DEV.to.
+date: 2021/10/20
+tags: [javascript, vue, nuxtjs]
 ---
-
-I adore DEV.to. It's an amazing platform that lets developers all around the
-world share knowledge and ideas.
 
 The "problem" with DEV.to as a content creator is that as much as it's nice
 seeing the views increase on DEV.to, you also want those views going to your
@@ -24,7 +21,7 @@ example.
 First off, we need an RSS feed. The best way of doing this is with the
 `@nuxtjs/feed` module that you can install with:
 
-```shell[Install @nuxtjs/feed module to create RSS feed]
+```shell
 yarn add -D @nuxtjs/feed
 ```
 

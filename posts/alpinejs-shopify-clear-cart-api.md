@@ -1,9 +1,8 @@
 ---
 title: How to Clear the Shopify Cart with Alpine JS
-description:
-  Find out how to clear the Shopify cart with Alpine JS and the Shopify API.
+description: Use Alpine JS to easily clear the Shopify cart with a page refresh.
 date: 2021/12/10
-tags: [alpinejs, javascript, shopify, api]
+tags: [alpinejs, javascript, shopify]
 ---
 
 Recently, I've been using a lot of Alpine JS when developing Shopify themes and

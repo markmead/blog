@@ -1,6 +1,6 @@
 ---
-title: Shopify Add to Cart with Vanilla JS
-description: Easily create an autogrowing textarea with Alpine JS.
+title: How to Add to the Shopify Cart with Vanilla JS
+description: Use vanilla JS to add to the Shopify cart without a page refresh.
 date: 2021/12/10
 tags: [javascript, shopify]
 ---
