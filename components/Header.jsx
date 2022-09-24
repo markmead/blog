@@ -6,7 +6,7 @@ export default function Header() {
   let nextRouter = useRouter()
 
   let menuItems = [
-    { title: 'Posts', path: '/posts', external: false },
+    { title: 'Blog', path: '/blog', external: false },
     { title: 'Projects', path: '/projects', external: false },
     { title: 'Uses', path: '/uses', external: false },
   ]
