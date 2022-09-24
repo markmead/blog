@@ -76,7 +76,7 @@ With the popularity of Tailwind CSS this test seems important.
 I'm not bothering with a HTML example for this one, it's obvious that the HAML
 code is difficult to read and that a HTML version would be better.
 
-## My Thougts
+## My Thoughts
 
 I wouldn't use HAML.
 
@@ -100,8 +100,8 @@ However, if you need to convert an existing Ruby on Rails application to HAML
 you can use [haml-rails](https://rubygems.org/gems/haml-rails). This will
 convert all `.html.erb` files to `.html.haml`.
 
-Additionaly, it will set the default view file template to HAML, meaning Ruby on
-Rails generators like `rails g scaffold` will create `.html.haml` files.
+Additionally, it will set the default view file template to HAML, meaning Ruby
+on Rails generators like `rails g scaffold` will create `.html.haml` files.
 
 ## How to Write HAML
 

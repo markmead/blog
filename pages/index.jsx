@@ -34,7 +34,7 @@ export default function Index({ posts, projects }) {
       <div className="flex justify-center">
         <Link href="/blog">
           <a className="block px-5 py-3 no-underline border rounded-lg bg-slate-50 border-slate-100 dark:bg-slate-800 dark:border-slate-700">
-            <span className="text-sm font-normal">View all posts</span>
+            <span className="text-sm font-normal">View More</span>
           </a>
         </Link>
       </div>

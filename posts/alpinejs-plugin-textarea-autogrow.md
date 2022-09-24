@@ -9,7 +9,7 @@ At some point in your development career you will most likely be asked to make a
 `<textarea>` autogrow with the value that the user has inputted.
 
 There are a few approaches you can take when creating this functionality but the
-most common is a JavaScript function similair to this.
+most common is a JavaScript function similar to this.
 
 ```js
 function textareaAutogrow() {
@@ -46,7 +46,7 @@ What's happening here?
 
 We have the `x-data` context initialising a `resize()` function which has the
 same logic as our JavaScript example. This function is then called when the
-Alpine JS component initialises and again everytime the `input` DOM event is
+Alpine JS component initialises and again every time the `input` DOM event is
 dispatched.
 
 Great, this works but does it tick the three boxes of the JavaScript example?
