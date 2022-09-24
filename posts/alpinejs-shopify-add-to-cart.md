@@ -11,7 +11,7 @@ frontend of your Shopify store to use more JavaScript.
 
 You can also read the JavaScript approach.
 
-[How to Add to the Shopify Cart with Vanilla JS](/posts/javascript-shopify-add-to-cart)
+[How to Add to the Shopify Cart with Vanilla JS](/blog/javascript-shopify-add-to-cart)
 
 Let's write some code. I'll assume you have Alpine JS installed.
 
