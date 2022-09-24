@@ -9,7 +9,7 @@ _This is an old post that I have updated, I no longer use Ruby on Rails._
 
 Exporting a CSV in Ruby on Rails is a simple task, but what if you want to
 filter the data? OK, it's probably still easy for a lot of you, but for me this
-was a speedbump in a project I worked on.
+was a speed bump in a project I worked on.
 
 But before we begin, what is this project?
 

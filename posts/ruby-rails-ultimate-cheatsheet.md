@@ -1,6 +1,6 @@
 ---
 title: The Ultimate Ruby on Rails Cheatsheet
-description: Digestable Ruby on Rails information to help you with development.
+description: Digestible Ruby on Rails information to help you with development.
 date: 2021/10/20
 tags: [ruby, rails]
 ---
@@ -1165,7 +1165,7 @@ Data supplied from a `CONST` variable on the `User` model
 ### Form Select with Prompt Option
 
 ```erb
-<%= form.select(:country, User::COUNTRIES, inlude_blank: "Select country") %>
+<%= form.select(:country, User::COUNTRIES, include_blank: "Select country") %>
 ```
 
 ### Form Select with HTML Attributes
@@ -1747,7 +1747,7 @@ class CheckoutController < ApplicationController
 end
 ```
 
-`views/checkount/create.js.erb`
+`views/checkout/create.js.erb`
 
 ```ruby
 const stripe = Stripe("<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>")
@@ -1786,8 +1786,6 @@ And then in your layout file you can do this.
 ```erb
 <body class="<%= page_class %>">
 ```
-
-[Using the Controller to Create Page Class Names in Ruby on Rails](https://www.learnrubyonrails.com/blogs/rails-controller-class-names-page/)
 
 ### Better Email Link
 

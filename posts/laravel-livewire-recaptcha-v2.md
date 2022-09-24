@@ -81,7 +81,7 @@ The `handleRecaptchaLoad` function loops through the `captchaIds` array and does
 the following.
 
 - Checks an element exists with that `id`
-- Initalises and renders a Google reCaptcha on that element
+- Initialises and renders a Google reCaptcha on that element
 - Adds a callback to the function based on the `id`
 
 This will create callback function name such as `recaptchaASubmit`.
@@ -89,7 +89,7 @@ This will create callback function name such as `recaptchaASubmit`.
 **Why This Approach?**
 
 This allows for multiple Google reCaptcha components on the same page without
-them interfering with eachother.
+them interfering with each other.
 
 It works fine with a single Google reCaptcha component as well, but if you want
 to remove the extra code, you do this.
@@ -264,6 +264,6 @@ components.
 
 And there we have it, a working Google reCaptcha with Livewire.
 
-Hopefully this isn't too confusing, there's a lot of pieces talking to eachother
-spread across files, but once the logic has been added to the project it becomes
-a lot easier to follow.
+Hopefully this isn't too confusing, there's a lot of pieces talking to each
+other spread across files, but once the logic has been added to the project it
+becomes a lot easier to follow.

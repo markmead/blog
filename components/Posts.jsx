@@ -2,7 +2,7 @@ import Post from './Post'
 
 export default function Posts({ posts }) {
   return (
-    <ul className="list-none p-0 space-y-4">
+    <ul className="p-0 space-y-4 list-none">
       {posts.map(({ filePath, data }) => (
         <Post
           key={filePath}
