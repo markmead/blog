@@ -1,5 +1,5 @@
 ---
-title: How to Autogrow Textarea with Alpine JS (+ New Plugin)
+title: How to Autogrow Textarea with Alpine JS
 description: Easily create an autogrowing textarea with Alpine JS.
 date: 2022/06/10
 tags: [alpinejs, javascript]
