@@ -8,13 +8,24 @@ import Projects from '../../components/Projects'
 
 export default function ProjectsIndex({ projects }) {
   return (
-    <article className="prose max-w-none prose-slate dark:prose-invert">
-      <h1>Projects</h1>
+    <>
+      <Head>
+        <title>Projects | Mark Mead</title>
+        <meta
+          property="og:title"
+          content="Projects | Mark Mead"
+          key="og:title"
+        />
+      </Head>
 
-      <p className="lead">Here are projects about things.</p>
+      <article className="prose max-w-none prose-slate dark:prose-invert">
+        <h1>Projects</h1>
 
-      <Projects projects={projects} stacked={false} />
-    </article>
+        <p className="lead">Here are projects about things.</p>
+
+        <Projects projects={projects} stacked={false} />
+      </article>
+    </>
   )
 }
 
