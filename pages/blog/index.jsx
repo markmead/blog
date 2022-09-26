@@ -1,3 +1,5 @@
+import Head from 'next/head'
+
 import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
@@ -8,13 +10,20 @@ import Posts from '../../components/Posts'
 
 export default function PostsIndex({ posts }) {
   return (
-    <article className="prose max-w-none prose-slate dark:prose-invert">
-      <h1>Posts</h1>
+    <>
+      <Head>
+        <title>Blog | Mark Mead</title>
+        <meta property="og:title" content="Blog | Mark Mead" key="og:title" />
+      </Head>
 
-      <p className="lead">Here are posts about things.</p>
+      <article className="prose max-w-none prose-slate dark:prose-invert">
+        <h1>Posts</h1>
 
-      <Posts posts={posts} />
-    </article>
+        <p className="lead">Here are posts about things.</p>
+
+        <Posts posts={posts} />
+      </article>
+    </>
   )
 }
 
