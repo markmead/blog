@@ -10,14 +10,21 @@ export default function Footer() {
           {new Date().getFullYear()} Mark Mead.
         </p>
 
-        <select
-          onChange={(e) => handleVersion(e.target.value)}
-          className="text-sm rounded-lg bg-slate-50 border-slate-200 dark:bg-slate-800 dark:border-slate-700 text-slate-700 dark:text-slate-200"
-        >
-          <option>Latest</option>
-          <option value="https://v2.markmead.dev/">v2</option>
-          <option value="https://v1.markmead.dev/">v1</option>
-        </select>
+        <div>
+          <label htmlFor="WebsiteVersion" class="sr-only">
+            Website Version
+          </label>
+
+          <select
+            id="WebsiteVersion"
+            onChange={(e) => handleVersion(e.target.value)}
+            className="text-sm rounded-lg bg-slate-50 border-slate-200 dark:bg-slate-800 dark:border-slate-700 text-slate-700 dark:text-slate-200"
+          >
+            <option>Latest</option>
+            <option value="https://v2.markmead.dev/">v2</option>
+            <option value="https://v1.markmead.dev/">v1</option>
+          </select>
+        </div>
       </div>
     </footer>
   )
