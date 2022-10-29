@@ -2,10 +2,8 @@ const { promises: fs } = require('fs')
 const path = require('path')
 const Feed = require('feed').Feed
 const matter = require('gray-matter')
-const showdown = require('showdown')
-const converter = new showdown.Converter({ tables: 'true' })
 
-async function generate() {
+async function generateRssFeed() {
   const rssFeed = new Feed({
     title: 'Mark Mead',
     description: 'RSS feed.',
@@ -25,12 +23,14 @@ async function generate() {
     },
   })
 
-  const selfPosts = await fs.readdir(path.join(__dirname, '..', 'posts'))
+  const selfPosts = await fs.readdir(
+    path.join(__dirname, '..', '/src/data/posts')
+  )
 
   await Promise.all(
     selfPosts.map(async (postName) => {
       const postContent = await fs.readFile(
-        path.join(__dirname, '..', 'posts', postName)
+        path.join(__dirname, '..', '/src/data/posts', postName)
       )
 
       const postFrontmatter = matter(postContent)
@@ -47,7 +47,7 @@ async function generate() {
         id: postSlug,
         link: `https://www.markmead.dev/blog/${postSlug}`,
         description: postData.description,
-        content: converter.makeHtml(postMarkdown),
+        content: postMarkdown,
         author: [
           {
             name: 'Mark Mead',
@@ -65,4 +65,4 @@ async function generate() {
   await fs.writeFile('./public/rss.atom', rssFeed.atom1())
 }
 
-generate()
+generateRssFeed()
