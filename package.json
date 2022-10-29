@@ -4,9 +4,9 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
     "rss": "node ./scripts/rss.js",
-    "postbuild": "yarn rss && next-sitemap --config sitemap.config.js"
+    "postbuild": "yarn rss && next-sitemap --config sitemap.config.js",
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "12.1.0",
