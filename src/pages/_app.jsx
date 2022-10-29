@@ -1,11 +1,10 @@
-import '../styles/globals.css'
-import 'prismjs/themes/prism-okaidia.css'
-
 import Head from 'next/head'
 
-import Layout from '../components/Layout'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import '@/styles/tailwind.css'
+import 'prismjs/themes/prism-okaidia.css'
+
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -14,7 +13,7 @@ function MyApp({ Component, pageProps }) {
         <title>Web Developer | Mark Mead</title>
         <meta
           name="description"
-          content="Creator of HyperUI and an eCommerce developer using the TALL stack and Shopify."
+          content="TALL stack developer within the e-commerce industry and creator of HyperUI."
           key="description"
         />
         <meta
@@ -24,7 +23,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           property="og:description"
-          content="Creator of HyperUI and an eCommerce developer using the TALL stack and Shopify."
+          content="TALL stack developer within the e-commerce industry and creator of HyperUI."
           key="og:description"
         />
         <meta property="og:type" content="website" />
@@ -37,13 +36,12 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           name="twitter:description"
-          content="Creator of HyperUI and an eCommerce developer using the TALL stack and Shopify."
+          content="TALL stack developer within the e-commerce industry and creator of HyperUI."
           key="twitter:description"
         />
         <meta name="twitter:image" content="https://www.markmead.dev/og.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://www.markmead.dev/" />
-        <link rel="icon" href="https://fav.farm/💐" />
       </Head>
 
       <div className="bg-white dark:bg-slate-900">
@@ -51,9 +49,9 @@ function MyApp({ Component, pageProps }) {
           <div>
             <Header />
 
-            <Layout>
+            <main className="py-8">
               <Component {...pageProps} />
-            </Layout>
+            </main>
           </div>
 
           <Footer />

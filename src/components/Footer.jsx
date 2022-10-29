@@ -11,7 +11,7 @@ export default function Footer() {
         </p>
 
         <div>
-          <label htmlFor="WebsiteVersion" class="sr-only">
+          <label htmlFor="WebsiteVersion" className="sr-only">
             Website Version
           </label>
 
