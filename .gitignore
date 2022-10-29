@@ -31,11 +31,9 @@ yarn-error.log*
 # vercel
 .vercel
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-
 # rss
-public/rss.xml
-public/rss.json
-public/rss.atom
+public/rss.*
+
+# seo
+public/sitemap.xml
+public/robots.txt

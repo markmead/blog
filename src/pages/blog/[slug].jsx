@@ -42,6 +42,14 @@ export default function PostPage({ blogSource, blogFrontmatter }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
         />
+
+        <title>{blogFrontmatter.title}</title>
+
+        <meta
+          content={blogFrontmatter.description}
+          name="description"
+          key="description"
+        />
       </Head>
 
       <article className="prose max-w-none prose-slate dark:prose-invert">
