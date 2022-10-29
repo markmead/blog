@@ -1,4 +1,4 @@
-import { usesCurrent, usesPrevious } from '../data/usesPage'
+import { usesCurrent, usesPrevious } from '@/data/usesPage'
 
 export default function Uses() {
   return (
@@ -7,8 +7,7 @@ export default function Uses() {
 
       <p className="lead">
         Here is the tack stack that I use. As for hardware I use one item, my
-        MacBook Pro (14-inch, 2021). Last update was on the 15th September,
-        2022.
+        MacBook Pro (14-inch, 2021). Last update was on the 30th October, 2022.
       </p>
 
       <h2>Current</h2>

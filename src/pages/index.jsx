@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import { getBlogs } from '../lib/getPosts'
-import { getProjects } from '../lib/getProjects'
+import { getBlogs } from '@/lib/getPosts'
+import { getProjects } from '@/lib/getProjects'
 
 import Posts from '@/components/Posts'
 import Projects from '@/components/Projects'
@@ -35,11 +35,19 @@ export default function Index({ blogPosts, projectPosts }) {
 }
 
 export async function getStaticProps() {
-  const blogPosts = getBlogs(['title', 'slug', 'description', 'date', 'tags'])
+  const blogPosts = getBlogs([
+    'title',
+    'slug',
+    'description',
+    'date',
+    'tags',
+  ]).slice(0, 3)
+
   const projectPosts = getProjects([
     'title',
     'slug',
     'description',
+    'role',
     'tags',
     'featured',
   ]).filter((projectData) => projectData.featured)
