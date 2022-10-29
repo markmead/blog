@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "rss": "node ./scripts/rss.js",
-    "postbuild": "yarn rss && next-sitemap"
+    "postbuild": "yarn rss && next-sitemap --config sitemap.config.js"
   },
   "dependencies": {
     "next": "latest",
