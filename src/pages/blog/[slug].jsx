@@ -18,6 +18,8 @@ import { serialize } from 'next-mdx-remote/serialize'
 
 import { getBlogPaths } from '@/lib/getPosts'
 
+import Prose from '@/components/Prose'
+
 export default function PostPage({ blogSource, blogFrontmatter }) {
   const schemaData = {
     '@context': 'http://schema.org',
@@ -52,13 +54,13 @@ export default function PostPage({ blogSource, blogFrontmatter }) {
         />
       </Head>
 
-      <article className="prose max-w-none prose-slate dark:prose-invert">
+      <Prose>
         <h1>{blogFrontmatter.title}</h1>
 
         <p className="lead">{blogFrontmatter.description}</p>
 
         <MDXRemote {...blogSource} />
-      </article>
+      </Prose>
     </>
   )
 }

@@ -2,6 +2,8 @@ import Head from 'next/head'
 
 import { usesCurrent, usesPrevious } from '@/data/usesPage'
 
+import Prose from '@/components/Prose'
+
 export default function Uses() {
   return (
     <>
@@ -15,12 +17,12 @@ export default function Uses() {
         />
       </Head>
 
-      <article className="prose max-w-none prose-slate dark:prose-invert">
+      <Prose>
         <h1>Uses</h1>
 
         <p className="lead">
           Here is the tack stack that I use. As for hardware I use one item, my
-          MacBook Pro (14-inch, 2021). Last update was on the 30th October,
+          MacBook Pro (14-inch, 2021). Last update was on the 15th December,
           2022.
         </p>
 
@@ -39,7 +41,7 @@ export default function Uses() {
             <li key={usesItem}>{usesItem}</li>
           ))}
         </ul>
-      </article>
+      </Prose>
     </>
   )
 }

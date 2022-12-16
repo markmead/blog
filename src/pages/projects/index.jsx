@@ -4,6 +4,8 @@ import { getProjects } from '@/lib/getProjects'
 
 import Projects from '@/components/Projects'
 
+import Prose from '@/components/Prose'
+
 export default function ProjectsIndex({ projectPosts }) {
   return (
     <>
@@ -17,13 +19,13 @@ export default function ProjectsIndex({ projectPosts }) {
         />
       </Head>
 
-      <article className="prose max-w-none prose-slate dark:prose-invert">
+      <Prose>
         <h1>Projects</h1>
 
         <p className="lead">Here are projects about things.</p>
 
         <Projects projectPosts={projectPosts} stacked={false} />
-      </article>
+      </Prose>
     </>
   )
 }

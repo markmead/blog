@@ -1,15 +1,4 @@
-import { useEffect } from 'react'
-
 import Head from 'next/head'
-
-import Prism from 'prismjs'
-
-import 'prismjs/components/prism-markup-templating.js'
-import 'prismjs/components/prism-php.js'
-import 'prismjs/components/prism-json.js'
-import 'prismjs/components/prism-ruby.js'
-import 'prismjs/components/prism-erb.js'
-import 'prismjs/components/prism-haml.js'
 
 import fs from 'fs'
 import matter from 'gray-matter'
@@ -17,6 +6,8 @@ import { MDXRemote } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 
 import { getProjectPaths } from '@/lib/getProjects'
+
+import Prose from '@/components/Prose'
 
 export default function PostPage({ projectSource, projectFrontmatter }) {
   const schemaData = {
@@ -32,8 +23,6 @@ export default function PostPage({ projectSource, projectFrontmatter }) {
       url: 'https://twitter.com/itsmarkmead',
     },
   }
-
-  useEffect(() => Prism.highlightAll())
 
   return (
     <>
@@ -52,13 +41,13 @@ export default function PostPage({ projectSource, projectFrontmatter }) {
         />
       </Head>
 
-      <article className="prose max-w-none prose-slate dark:prose-invert">
+      <Prose>
         <h1>{projectFrontmatter.title}</h1>
 
         <p className="lead">{projectFrontmatter.description}</p>
 
         <MDXRemote {...projectSource} />
-      </article>
+      </Prose>
     </>
   )
 }
