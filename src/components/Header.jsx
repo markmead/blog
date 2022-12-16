@@ -26,7 +26,7 @@ export default function Header() {
         <Link href="/">
           <a
             aria-current={nextRouter.pathname === '/' ? 'page' : 'false'}
-            class="font-medium"
+            className="font-medium"
           >
             Home
           </a>
