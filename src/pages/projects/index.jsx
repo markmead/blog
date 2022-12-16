@@ -2,9 +2,7 @@ import Head from 'next/head'
 
 import { getProjects } from '@/lib/getProjects'
 
-import Projects from '@/components/Projects'
-
-import Prose from '@/components/Prose'
+import Grid from '@/components/Grid'
 
 export default function ProjectsIndex({ projectPosts }) {
   return (
@@ -19,13 +17,11 @@ export default function ProjectsIndex({ projectPosts }) {
         />
       </Head>
 
-      <Prose>
-        <h1>Projects</h1>
+      <h1>Projects</h1>
 
-        <p className="lead">Here are projects about things.</p>
+      <p className="lead">Here are projects about things.</p>
 
-        <Projects projectPosts={projectPosts} stacked={false} />
-      </Prose>
+      <Grid gridItems={projectPosts} isProject />
     </>
   )
 }

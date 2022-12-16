@@ -1,27 +1,13 @@
-import { useEffect, useRef } from 'react'
-
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 
 import '@/styles/tailwind.css'
 import 'prismjs/themes/prism-okaidia.css'
 
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import Prose from '@/components/Prose'
 
 function MyApp({ Component, pageProps }) {
-  const nextRouter = useRouter()
-  const innerContainerRef = useRef(null)
-
-  useEffect(() => {
-    const innerContainer = innerContainerRef.current
-
-    innerContainer.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
-  }, [nextRouter.asPath])
-
   return (
     <>
       <Head>
@@ -59,18 +45,15 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:url" content="https://www.markmead.dev/" />
       </Head>
 
-      <div className="overflow-hidden bg-white">
-        <div className="flex flex-col h-screen max-w-2xl p-4 mx-auto sm:p-6">
-          <div
-            ref={innerContainerRef}
-            className="px-4 pb-4 sm:pb-6 overflow-scroll border border-black sm:px-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:_none] [scrollbar-width:_none]"
-          >
-            <Header />
+      <div className="p-4 sm:p-6 lg:p-8">
+        <div className="mx-auto space-y-8 max-w-prose">
+          <Header />
 
-            <main className="mt-8">
+          <main>
+            <Prose>
               <Component {...pageProps} />
-            </main>
-          </div>
+            </Prose>
+          </main>
 
           <Footer />
         </div>

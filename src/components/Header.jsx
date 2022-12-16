@@ -21,8 +21,8 @@ export default function Header() {
   ]
 
   return (
-    <header className="sticky inset-x-0 top-0 z-50 bg-white">
-      <div className="flex items-center justify-between py-4">
+    <header>
+      <div className="flex items-center justify-between">
         <Link href="/">
           <a
             aria-current={nextRouter.pathname === '/' ? 'page' : 'false'}

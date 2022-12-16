@@ -2,8 +2,7 @@ import Head from 'next/head'
 
 import { getBlogs } from '@/lib/getPosts'
 
-import Posts from '@/components/Posts'
-import Prose from '@/components/Prose'
+import Grid from '@/components/Grid'
 
 export default function PostsIndex({ blogPosts }) {
   return (
@@ -18,13 +17,11 @@ export default function PostsIndex({ blogPosts }) {
         />
       </Head>
 
-      <Prose>
-        <h1>Posts</h1>
+      <h1>Posts</h1>
 
-        <p className="lead">Here are posts about things.</p>
+      <p className="lead">Here are posts about things.</p>
 
-        <Posts blogPosts={blogPosts} />
-      </Prose>
+      <Grid gridItems={blogPosts} />
     </>
   )
 }

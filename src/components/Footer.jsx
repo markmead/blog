@@ -4,7 +4,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="mt-4">
+    <footer>
       <div className="flex items-center justify-between gap-4">
         <p className="text-xs">{new Date().getFullYear()} Mark Mead.</p>
 

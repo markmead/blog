@@ -3,13 +3,11 @@ import Link from 'next/link'
 import { getBlogs } from '@/lib/getPosts'
 import { getProjects } from '@/lib/getProjects'
 
-import Posts from '@/components/Posts'
-import Projects from '@/components/Projects'
-import Prose from '@/components/Prose'
+import Grid from '@/components/Grid'
 
 export default function Index({ blogPosts, projectPosts }) {
   return (
-    <Prose>
+    <>
       <h1>Mark Mead</h1>
 
       <p className="lead">
@@ -18,18 +16,18 @@ export default function Index({ blogPosts, projectPosts }) {
 
       <h2>Featured Projects</h2>
 
-      <Projects projectPosts={projectPosts} stacked={true} />
+      <Grid gridItems={projectPosts} isStacked isProject />
 
       <h2>Latest Posts</h2>
 
-      <Posts blogPosts={blogPosts} />
+      <Grid gridItems={blogPosts} />
 
       <div className="flex justify-center">
         <Link href="/blog">
           <a>View More</a>
         </Link>
       </div>
-    </Prose>
+    </>
   )
 }
 
