@@ -7,7 +7,7 @@ export default function Project({ path, title, description, role, tags }) {
         as={`/projects/${path.replace(/\.md?$/, '')}`}
         href={`/projects/[slug]`}
       >
-        <a className="block p-4 m-0 no-underline border rounded-lg border-slate-100 bg-slate-50 dark:border-slate-700 sm:bg-transparent sm:hover:bg-slate-50 dark:bg-slate-800 sm:dark:hover:bg-slate-800">
+        <a className="block p-4 m-0 no-underline bg-white border border-black hover:invert">
           <h3 className="m-0">{title}</h3>
 
           <div className="font-normal">

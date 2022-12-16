@@ -1,6 +1,5 @@
-# Mark Mead
+# Website
 
-Here you can find the Next JS code that powers
 [markmead.dev](https://markmead.dev/).
 
 ### Versions

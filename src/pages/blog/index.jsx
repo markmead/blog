@@ -1,8 +1,9 @@
 import Head from 'next/head'
 
-import Posts from '@/components/Posts'
-
 import { getBlogs } from '@/lib/getPosts'
+
+import Posts from '@/components/Posts'
+import Prose from '@/components/Prose'
 
 export default function PostsIndex({ blogPosts }) {
   return (
@@ -17,13 +18,13 @@ export default function PostsIndex({ blogPosts }) {
         />
       </Head>
 
-      <article className="prose max-w-none prose-slate dark:prose-invert">
+      <Prose>
         <h1>Posts</h1>
 
         <p className="lead">Here are posts about things.</p>
 
         <Posts blogPosts={blogPosts} />
-      </article>
+      </Prose>
     </>
   )
 }

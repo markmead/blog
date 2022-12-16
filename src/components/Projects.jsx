@@ -1,4 +1,4 @@
-import Project from './Project'
+import Project from '@/components/Project'
 
 export default function Projects({ projectPosts, stacked }) {
   return (

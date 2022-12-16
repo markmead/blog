@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
         <title>Web Developer | Mark Mead</title>
         <meta
           name="description"
-          content="TALL stack developer within the e-commerce industry and creator of HyperUI."
+          content="Creator of open source projects such as HyperUI, HyperJS, Hypercolor and a range of JavaScript and Alpine JS plugins."
           key="description"
         />
         <meta
@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           property="og:description"
-          content="TALL stack developer within the e-commerce industry and creator of HyperUI."
+          content="Creator of open source projects such as HyperUI, HyperJS, Hypercolor and a range of JavaScript and Alpine JS plugins."
           key="og:description"
         />
         <meta property="og:type" content="website" />
@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           name="twitter:description"
-          content="TALL stack developer within the e-commerce industry and creator of HyperUI."
+          content="Creator of open source projects such as HyperUI, HyperJS, Hypercolor and a range of JavaScript and Alpine JS plugins."
           key="twitter:description"
         />
         <meta name="twitter:image" content="https://www.markmead.dev/og.jpg" />
@@ -44,8 +44,8 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:url" content="https://www.markmead.dev/" />
       </Head>
 
-      <div className="bg-white dark:bg-slate-900">
-        <div className="flex flex-col justify-between max-w-2xl min-h-screen p-4 mx-auto sm:py-8">
+      <div className="bg-white">
+        <div className="flex flex-col justify-between max-w-2xl min-h-screen p-4 sm:py-8">
           <div>
             <Header />
 

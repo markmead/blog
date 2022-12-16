@@ -5,10 +5,11 @@ import { getProjects } from '@/lib/getProjects'
 
 import Posts from '@/components/Posts'
 import Projects from '@/components/Projects'
+import Prose from '@/components/Prose'
 
 export default function Index({ blogPosts, projectPosts }) {
   return (
-    <article className="prose max-w-none prose-slate dark:prose-invert">
+    <Prose>
       <h1>Mark Mead</h1>
 
       <p className="lead">
@@ -25,12 +26,10 @@ export default function Index({ blogPosts, projectPosts }) {
 
       <div className="flex justify-center">
         <Link href="/blog">
-          <a className="block px-5 py-3 no-underline border rounded-lg bg-slate-50 border-slate-100 dark:bg-slate-800 dark:border-slate-700">
-            <span className="text-sm font-normal">View More</span>
-          </a>
+          <a>View More</a>
         </Link>
       </div>
-    </article>
+    </Prose>
   )
 }
 
