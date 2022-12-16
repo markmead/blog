@@ -44,17 +44,19 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:url" content="https://www.markmead.dev/" />
       </Head>
 
-      <div className="bg-white">
-        <div className="flex flex-col justify-between max-w-2xl min-h-screen p-4 sm:py-8">
-          <div>
-            <Header />
+      <div className="overflow-hidden bg-white">
+        <div className="flex flex-col h-screen max-w-2xl p-4 mx-auto sm:p-6">
+          <div className="p-4 overflow-scroll border border-black sm:p-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:_none] [scrollbar-width:_none]">
+            <div>
+              <Header />
 
-            <main className="py-8">
-              <Component {...pageProps} />
-            </main>
+              <main className="py-8">
+                <Component {...pageProps} />
+              </main>
+            </div>
+
+            <Footer />
           </div>
-
-          <Footer />
         </div>
       </div>
     </>

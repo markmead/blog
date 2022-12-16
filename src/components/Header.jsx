@@ -8,7 +8,6 @@ export default function Header() {
   const menuItems = [
     { title: 'Blog', path: '/blog', external: false },
     { title: 'Projects', path: '/projects', external: false },
-    { title: 'Uses', path: '/uses', external: false },
     {
       title: 'Twitter',
       path: 'https://twitter.com/itsmarkmead',
