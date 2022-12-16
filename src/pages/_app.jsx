@@ -70,9 +70,9 @@ function MyApp({ Component, pageProps }) {
             <main className="py-8">
               <Component {...pageProps} />
             </main>
-          </div>
 
-          <Footer />
+            <Footer />
+          </div>
         </div>
       </div>
     </>
