@@ -67,12 +67,12 @@ function MyApp({ Component, pageProps }) {
           >
             <Header />
 
-            <main className="py-8">
+            <main className="mt-8">
               <Component {...pageProps} />
             </main>
-
-            <Footer />
           </div>
+
+          <Footer />
         </div>
       </div>
     </>
