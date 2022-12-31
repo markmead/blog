@@ -28,11 +28,6 @@ export default function PostPage({ blogSource, blogFrontmatter }) {
     image: ['https://www.markmead.dev/og.jpg'],
     datePublished: `${blogFrontmatter.date}`,
     dateModified: `${blogFrontmatter.date}`,
-    author: {
-      '@type': 'Person',
-      name: 'Mark Mead',
-      url: 'https://twitter.com/itsmarkmead',
-    },
   }
 
   useEffect(() => Prism.highlightAll())

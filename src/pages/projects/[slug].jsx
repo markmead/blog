@@ -17,11 +17,6 @@ export default function PostPage({ projectSource, projectFrontmatter }) {
     image: ['https://www.markmead.dev/og.jpg'],
     datePublished: `${projectFrontmatter.date}`,
     dateModified: `${projectFrontmatter.date}`,
-    author: {
-      '@type': 'Person',
-      name: 'Mark Mead',
-      url: 'https://twitter.com/itsmarkmead',
-    },
   }
 
   return (

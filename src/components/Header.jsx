@@ -9,11 +9,6 @@ export default function Header() {
     { title: 'Blog', path: '/blog', external: false },
     { title: 'Projects', path: '/projects', external: false },
     {
-      title: 'Twitter',
-      path: 'https://twitter.com/itsmarkmead',
-      external: true,
-    },
-    {
       title: 'GitHub',
       path: 'https://github.com/markmead',
       external: true,
