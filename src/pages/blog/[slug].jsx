@@ -20,14 +20,14 @@ import { getBlogPaths } from '@/lib/getPosts'
 
 import Prose from '@/components/Prose'
 
-export default function PostPage({ blogSource, blogFrontmatter }) {
+export default function BlogShow({ source, frontmatter }) {
   const schemaData = {
     '@context': 'http://schema.org',
     '@type': 'NewsArticle',
-    headline: `${blogFrontmatter.title}`,
+    headline: `${frontmatter.title}`,
     image: ['https://www.markmead.dev/og.jpg'],
-    datePublished: `${blogFrontmatter.date}`,
-    dateModified: `${blogFrontmatter.date}`,
+    datePublished: `${frontmatter.date}`,
+    dateModified: `${frontmatter.date}`,
   }
 
   useEffect(() => Prism.highlightAll())
@@ -40,54 +40,51 @@ export default function PostPage({ blogSource, blogFrontmatter }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
         />
 
-        <title>{blogFrontmatter.title}</title>
+        <title>{frontmatter.title}</title>
 
         <meta
-          content={blogFrontmatter.description}
+          content={frontmatter.description}
           name="description"
           key="description"
         />
       </Head>
 
       <Prose>
-        <h1>{blogFrontmatter.title}</h1>
+        <h1>{frontmatter.title}</h1>
 
-        <p className="lead">{blogFrontmatter.description}</p>
+        <p className="lead">{frontmatter.description}</p>
 
-        <MDXRemote {...blogSource} />
+        <MDXRemote {...source} />
       </Prose>
     </>
   )
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const blogSlug = slug
+  const source = fs.readFileSync(`./src/data/posts/${slug}.mdx`)
+  const { content, data } = matter(source)
 
-  const blogSource = fs.readFileSync(`./src/data/posts/${blogSlug}.mdx`)
-
-  const { content: blogContent, data: blogData } = matter(blogSource)
-
-  const mdxSource = await serialize(blogContent, {
+  const mdxSource = await serialize(content, {
     mdxOptions: {
       rehypePlugins: [],
       remarkPlugins: [],
     },
-    scope: blogData,
+    scope: data,
   })
 
   return {
     props: {
-      blogFrontmatter: blogData,
-      blogSource: mdxSource,
+      frontmatter: data,
+      source: mdxSource,
     },
   }
 }
 
 export async function getStaticPaths() {
-  const blogPaths = getBlogPaths()
+  const paths = getBlogPaths()
 
   return {
-    paths: blogPaths,
+    paths,
     fallback: false,
   }
 }

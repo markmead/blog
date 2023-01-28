@@ -2,61 +2,59 @@ import fs from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
 
-const projectsDirectory = join(process.cwd(), '/src/data/projects')
+const directory = join(process.cwd(), '/src/data/projects')
 
 export function getProjectSlugs() {
-  return fs.readdirSync(projectsDirectory)
+  return fs.readdirSync(directory)
 }
 
 export function getProjectPaths() {
-  const projectSlugs = getProjectSlugs().map(function (projectSlug) {
-    return projectSlug.replace(/\.mdx$/, '')
+  const slugs = getProjectSlugs().map(function (slug) {
+    return slug.replace(/\.mdx$/, '')
   })
 
-  return projectSlugs.map((projectSlug) => {
+  return slugs.map((slug) => {
     return {
       params: {
-        slug: projectSlug,
+        slug,
       },
     }
   })
 }
 
-export function getProjectBySlug(projectSlug, dataFields = []) {
-  const trueSlug = projectSlug.replace(/\.mdx$/, '')
-  const fullPath = join(projectsDirectory, `${trueSlug}.mdx`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const { data: fileData, content: fileContent } = matter(fileContents)
+export function getProjectBySlug(slug, fields = []) {
+  const trueSlug = slug.replace(/\.mdx$/, '')
+  const fullPath = join(directory, `${trueSlug}.mdx`)
+  const contents = fs.readFileSync(fullPath, 'utf8')
+  const { data: fileData, content } = matter(contents)
 
-  const blogsData = {}
+  const data = {}
 
-  dataFields.forEach((dataField) => {
+  fields.forEach((dataField) => {
     if (dataField === 'slug') {
-      blogsData[dataField] = trueSlug
+      data[dataField] = trueSlug
     }
 
     if (dataField === 'content') {
-      blogsData[dataField] = fileContent
+      data[dataField] = content
     }
 
     if (typeof fileData[dataField] !== 'undefined') {
-      blogsData[dataField] = fileData[dataField]
+      data[dataField] = fileData[dataField]
     }
   })
 
-  return blogsData
+  return data
 }
 
-export function getProjects(dataFields = []) {
-  const projectSlugs = getProjectSlugs()
+export function getProjects(fields = []) {
+  const slugs = getProjectSlugs()
 
-  const projectPosts = projectSlugs
-    .map(function (projectSlug) {
-      return getProjectBySlug(projectSlug, dataFields)
-    })
-    .sort(function (projectPostA, projectPostB) {
-      return new Date(projectPostA.date) < new Date(projectPostB.date) ? 1 : -1
-    })
+  const posts = slugs
+    .map((slug) => getProjectBySlug(slug, fields))
+    .sort((postA, postB) =>
+      new Date(postA.date) < new Date(postB.date) ? 1 : -1
+    )
 
-  return projectPosts
+  return posts
 }

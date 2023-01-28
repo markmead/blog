@@ -4,7 +4,7 @@ import { getBlogs } from '@/lib/getPosts'
 
 import Grid from '@/components/Grid'
 
-export default function PostsIndex({ blogPosts }) {
+export default function BlogIndex({ posts }) {
   return (
     <>
       <Head>
@@ -21,15 +21,15 @@ export default function PostsIndex({ blogPosts }) {
 
       <p className="lead">Here are posts about things.</p>
 
-      <Grid gridItems={blogPosts} />
+      <Grid items={posts} />
     </>
   )
 }
 
 export async function getStaticProps() {
-  const blogPosts = getBlogs(['title', 'slug', 'description', 'date', 'tags'])
+  const posts = getBlogs(['title', 'slug', 'description', 'date', 'tags'])
 
   return {
-    props: { blogPosts },
+    props: { posts },
   }
 }

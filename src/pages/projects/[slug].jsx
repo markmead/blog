@@ -9,14 +9,14 @@ import { getProjectPaths } from '@/lib/getProjects'
 
 import Prose from '@/components/Prose'
 
-export default function PostPage({ projectSource, projectFrontmatter }) {
+export default function ProjectShow({ source, frontmatter }) {
   const schemaData = {
     '@context': 'http://schema.org',
     '@type': 'NewsArticle',
-    headline: `${projectFrontmatter.title}`,
+    headline: `${frontmatter.title}`,
     image: ['https://www.markmead.dev/og.jpg'],
-    datePublished: `${projectFrontmatter.date}`,
-    dateModified: `${projectFrontmatter.date}`,
+    datePublished: `${frontmatter.date}`,
+    dateModified: `${frontmatter.date}`,
   }
 
   return (
@@ -27,56 +27,51 @@ export default function PostPage({ projectSource, projectFrontmatter }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
         />
 
-        <title>{projectFrontmatter.title}</title>
+        <title>{frontmatter.title}</title>
 
         <meta
-          content={projectFrontmatter.description}
+          content={frontmatter.description}
           name="description"
           key="description"
         />
       </Head>
 
       <Prose>
-        <h1>{projectFrontmatter.title}</h1>
+        <h1>{frontmatter.title}</h1>
 
-        <p className="lead">{projectFrontmatter.description}</p>
+        <p className="lead">{frontmatter.description}</p>
 
-        <MDXRemote {...projectSource} />
+        <MDXRemote {...source} />
       </Prose>
     </>
   )
 }
 
 export async function getStaticProps({ params: { slug } }) {
-  const projectSlug = slug
+  const source = fs.readFileSync(`./src/data/projects/${slug}.mdx`)
+  const { content, data } = matter(source)
 
-  const projectSource = fs.readFileSync(
-    `./src/data/projects/${projectSlug}.mdx`
-  )
-
-  const { content: projectContent, data: projectData } = matter(projectSource)
-
-  const mdxSource = await serialize(projectContent, {
+  const mdxSource = await serialize(content, {
     mdxOptions: {
       rehypePlugins: [],
       remarkPlugins: [],
     },
-    scope: projectData,
+    scope: data,
   })
 
   return {
     props: {
-      projectFrontmatter: projectData,
-      projectSource: mdxSource,
+      frontmatter: data,
+      source: mdxSource,
     },
   }
 }
 
 export async function getStaticPaths() {
-  const projectPaths = getProjectPaths()
+  const paths = getProjectPaths()
 
   return {
-    paths: projectPaths,
+    paths,
     fallback: false,
   }
 }

@@ -2,61 +2,59 @@ import fs from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
 
-const postsDirectory = join(process.cwd(), '/src/data/posts')
+const directory = join(process.cwd(), '/src/data/posts')
 
 export function getBlogSlugs() {
-  return fs.readdirSync(postsDirectory)
+  return fs.readdirSync(directory)
 }
 
 export function getBlogPaths() {
-  const blogSlugs = getBlogSlugs().map(function (blogSlug) {
-    return blogSlug.replace(/\.mdx$/, '')
+  const slugs = getBlogSlugs().map(function (slug) {
+    return slug.replace(/\.mdx$/, '')
   })
 
-  return blogSlugs.map((blogSlug) => {
+  return slugs.map((slug) => {
     return {
       params: {
-        slug: blogSlug,
+        slug,
       },
     }
   })
 }
 
-export function getPostBySlug(blogSlug, dataFields = []) {
-  const trueSlug = blogSlug.replace(/\.mdx$/, '')
-  const fullPath = join(postsDirectory, `${trueSlug}.mdx`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const { data: fileData, content: fileContent } = matter(fileContents)
+export function getPostBySlug(slug, fields = []) {
+  const trueSlug = slug.replace(/\.mdx$/, '')
+  const fullPath = join(directory, `${trueSlug}.mdx`)
+  const contents = fs.readFileSync(fullPath, 'utf8')
+  const { data: fileData, content } = matter(contents)
 
-  const blogsData = {}
+  const data = {}
 
-  dataFields.forEach((dataField) => {
-    if (dataField === 'slug') {
-      blogsData[dataField] = trueSlug
+  fields.forEach((field) => {
+    if (field === 'slug') {
+      data[field] = trueSlug
     }
 
-    if (dataField === 'content') {
-      blogsData[dataField] = fileContent
+    if (field === 'content') {
+      data[field] = content
     }
 
-    if (typeof fileData[dataField] !== 'undefined') {
-      blogsData[dataField] = fileData[dataField]
+    if (typeof fileData[field] !== 'undefined') {
+      data[field] = fileData[field]
     }
   })
 
-  return blogsData
+  return data
 }
 
-export function getBlogs(dataFields = []) {
-  const blogSlugs = getBlogSlugs()
+export function getBlogs(fields = []) {
+  const slugs = getBlogSlugs()
 
-  const blogPosts = blogSlugs
-    .map(function (blogSlug) {
-      return getPostBySlug(blogSlug, dataFields)
-    })
-    .sort(function (blogPostA, blogPostB) {
-      return new Date(blogPostA.date) < new Date(blogPostB.date) ? 1 : -1
-    })
+  const posts = slugs
+    .map((slug) => getPostBySlug(slug, fields))
+    .sort((postA, postB) =>
+      new Date(postA.date) < new Date(postB.date) ? 1 : -1
+    )
 
-  return blogPosts
+  return posts
 }

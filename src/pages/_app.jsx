@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
         <title>Web Developer | Mark Mead</title>
         <meta
           name="description"
-          content="Creator of open source projects such as HyperUI, HyperJS, Hypercolor and a range of JavaScript and Alpine JS plugins."
+          content="Creator of HyperUI and other less popular things."
           key="description"
         />
         <meta
@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           property="og:description"
-          content="Creator of open source projects such as HyperUI, HyperJS, Hypercolor and a range of JavaScript and Alpine JS plugins."
+          content="Creator of HyperUI and other less popular things."
           key="og:description"
         />
         <meta property="og:type" content="website" />
@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta
           name="twitter:description"
-          content="Creator of open source projects such as HyperUI, HyperJS, Hypercolor and a range of JavaScript and Alpine JS plugins."
+          content="Creator of HyperUI and other less popular things."
           key="twitter:description"
         />
         <meta name="twitter:image" content="https://www.markmead.dev/og.jpg" />

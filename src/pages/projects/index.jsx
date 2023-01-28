@@ -4,7 +4,7 @@ import { getProjects } from '@/lib/getProjects'
 
 import Grid from '@/components/Grid'
 
-export default function ProjectsIndex({ projectPosts }) {
+export default function ProjectIndex({ posts }) {
   return (
     <>
       <Head>
@@ -21,21 +21,15 @@ export default function ProjectsIndex({ projectPosts }) {
 
       <p className="lead">Here are projects about things.</p>
 
-      <Grid gridItems={projectPosts} isProject />
+      <Grid items={posts} project />
     </>
   )
 }
 
 export async function getStaticProps() {
-  const projectPosts = getProjects([
-    'title',
-    'slug',
-    'description',
-    'role',
-    'tags',
-  ])
+  const posts = getProjects(['title', 'slug', 'description', 'role', 'tags'])
 
   return {
-    props: { projectPosts },
+    props: { posts },
   }
 }

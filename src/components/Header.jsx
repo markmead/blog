@@ -1,11 +1,10 @@
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import Link from 'next/link'
-
 export default function Header() {
-  const nextRouter = useRouter()
+  const { pathname } = useRouter()
 
-  const menuItems = [
+  const links = [
     { title: 'Blog', path: '/blog', external: false },
     { title: 'Projects', path: '/projects', external: false },
     {
@@ -20,7 +19,7 @@ export default function Header() {
       <div className="flex items-center justify-between">
         <Link href="/">
           <a
-            aria-current={nextRouter.pathname === '/' ? 'page' : 'false'}
+            aria-current={pathname === '/' ? 'page' : 'false'}
             className="font-medium"
           >
             Home
@@ -28,17 +27,17 @@ export default function Header() {
         </Link>
 
         <nav className="flex items-center gap-4">
-          {menuItems.map((menuItem) => (
+          {links.map((menuItem) => (
             <Link href={menuItem.path} key={menuItem.path}>
               <a
                 className={`text-sm font-medium ${
-                  nextRouter.pathname === menuItem.path && 'underline'
+                  pathname === menuItem.path && 'underline'
                 }`}
                 {...(menuItem.external && {
                   target: '_blank',
                   rel: 'noreferrer',
                 })}
-                {...(nextRouter.pathname === menuItem.path && {
+                {...(pathname === menuItem.path && {
                   'aria-current': 'page',
                 })}
               >

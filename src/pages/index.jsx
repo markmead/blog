@@ -5,7 +5,7 @@ import { getProjects } from '@/lib/getProjects'
 
 import Grid from '@/components/Grid'
 
-export default function Index({ blogPosts, projectPosts }) {
+export default function Index({ blogs, projects }) {
   return (
     <>
       <h1>Mark Mead</h1>
@@ -16,11 +16,11 @@ export default function Index({ blogPosts, projectPosts }) {
 
       <h2>Featured Projects</h2>
 
-      <Grid gridItems={projectPosts} isStacked isProject />
+      <Grid items={projects} stacked project />
 
       <h2>Latest Posts</h2>
 
-      <Grid gridItems={blogPosts} />
+      <Grid items={blogs} />
 
       <div className="flex justify-center">
         <Link href="/blog">
@@ -32,7 +32,7 @@ export default function Index({ blogPosts, projectPosts }) {
 }
 
 export async function getStaticProps() {
-  const blogPosts = getBlogs([
+  const blogs = getBlogs([
     'title',
     'slug',
     'description',
@@ -40,16 +40,16 @@ export async function getStaticProps() {
     'tags',
   ]).slice(0, 3)
 
-  const projectPosts = getProjects([
+  const projects = getProjects([
     'title',
     'slug',
     'description',
     'role',
     'tags',
     'featured',
-  ]).filter((projectData) => projectData.featured)
+  ]).filter((project) => project.featured)
 
   return {
-    props: { blogPosts, projectPosts },
+    props: { blogs, projects },
   }
 }
