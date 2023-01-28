@@ -12,7 +12,7 @@ export default function Card({ post, project = false }) {
   return (
     <li className="p-0 m-0">
       <Link as={link.as} href={link.href}>
-        <a className="block p-4 m-0 no-underline bg-white border border-black hover:invert">
+        <a className="block p-4 m-0 no-underline border-4 border-black bg-white text-black hover:invert">
           <h3 className="m-0">{post.title}</h3>
 
           <div className="font-normal">

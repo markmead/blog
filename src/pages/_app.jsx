@@ -45,18 +45,20 @@ function MyApp({ Component, pageProps }) {
         <meta name="twitter:url" content="https://www.markmead.dev/" />
       </Head>
 
-      <div className="p-4 sm:p-6 lg:p-8">
-        <div className="mx-auto space-y-8 max-w-prose">
+      <div className="p-4 sm:p-6 lg:p-8 min-h-screen flex flex-col justify-between bg-white">
+        <div>
           <Header />
 
           <main>
-            <Prose>
-              <Component {...pageProps} />
-            </Prose>
+            <div className="max-w-prose my-8 sm:my-10 lg:my-12 mx-auto">
+              <Prose>
+                <Component {...pageProps} />
+              </Prose>
+            </div>
           </main>
-
-          <Footer />
         </div>
+
+        <Footer />
       </div>
     </>
   )

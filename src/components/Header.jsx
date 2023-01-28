@@ -15,37 +15,39 @@ export default function Header() {
   ]
 
   return (
-    <header>
-      <div className="flex items-center justify-between">
-        <Link href="/">
-          <a
-            aria-current={pathname === '/' ? 'page' : 'false'}
-            className="font-medium"
-          >
-            Home
-          </a>
-        </Link>
+    <header className="sticky top-4 z-50">
+      <div className="max-w-prose mx-auto">
+        <div className="flex items-center justify-between border-4 border-black p-4 bg-white">
+          <Link href="/">
+            <a
+              aria-current={pathname === '/' ? 'page' : 'false'}
+              className="font-medium"
+            >
+              Home
+            </a>
+          </Link>
 
-        <nav className="flex items-center gap-4">
-          {links.map((menuItem) => (
-            <Link href={menuItem.path} key={menuItem.path}>
-              <a
-                className={`text-sm font-medium ${
-                  pathname === menuItem.path && 'underline'
-                }`}
-                {...(menuItem.external && {
-                  target: '_blank',
-                  rel: 'noreferrer',
-                })}
-                {...(pathname === menuItem.path && {
-                  'aria-current': 'page',
-                })}
-              >
-                {menuItem.title}
-              </a>
-            </Link>
-          ))}
-        </nav>
+          <nav className="flex items-center gap-4">
+            {links.map((menuItem) => (
+              <Link href={menuItem.path} key={menuItem.path}>
+                <a
+                  className={`text-sm font-medium ${
+                    pathname === menuItem.path && 'underline'
+                  }`}
+                  {...(menuItem.external && {
+                    target: '_blank',
+                    rel: 'noreferrer',
+                  })}
+                  {...(pathname === menuItem.path && {
+                    'aria-current': 'page',
+                  })}
+                >
+                  {menuItem.title}
+                </a>
+              </Link>
+            ))}
+          </nav>
+        </div>
       </div>
     </header>
   )
